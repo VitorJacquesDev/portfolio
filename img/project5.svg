@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#0a192f"/>
+  
+  <!-- Dashboard Analytics Illustration -->
+  <g transform="translate(50, 30)">
+    <!-- Dashboard frame -->
+    <rect x="0" y="0" width="400" height="240" rx="8" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    
+    <!-- Dashboard header -->
+    <rect x="0" y="0" width="400" height="40" rx="8 8 0 0" fill="#1d3557"/>
+    <circle cx="20" cy="20" r="10" fill="#64ffda" opacity="0.8"/>
+    <rect x="40" y="15" width="120" height="10" rx="2" fill="#e6f1ff"/>
+    
+    <!-- Header navigation -->
+    <g transform="translate(200, 15)">
+      <rect x="0" y="0" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="50" y="0" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="100" y="0" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="150" y="0" width="40" height="10" rx="2" fill="#8892b0"/>
+    </g>
+    
+    <!-- Dashboard content -->
+    <g transform="translate(15, 55)">
+      <!-- Stats row -->
+      <g>
+        <!-- Stat card 1 -->
+        <rect x="0" y="0" width="85" height="60" rx="5" fill="#1d3557"/>
+        <rect x="10" y="10" width="40" height="8" rx="2" fill="#8892b0"/>
+        <text x="10" y="35" font-family="monospace" font-size="16" fill="#64ffda">89%</text>
+        <rect x="10" y="45" width="65" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+        
+        <!-- Stat card 2 -->
+        <rect x="95" y="0" width="85" height="60" rx="5" fill="#1d3557"/>
+        <rect x="105" y="10" width="40" height="8" rx="2" fill="#8892b0"/>
+        <text x="105" y="35" font-family="monospace" font-size="16" fill="#64ffda">$12.4k</text>
+        <rect x="105" y="45" width="65" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+        
+        <!-- Stat card 3 -->
+        <rect x="190" y="0" width="85" height="60" rx="5" fill="#1d3557"/>
+        <rect x="200" y="10" width="40" height="8" rx="2" fill="#8892b0"/>
+        <text x="200" y="35" font-family="monospace" font-size="16" fill="#64ffda">+24%</text>
+        <rect x="200" y="45" width="65" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+        
+        <!-- Stat card 4 -->
+        <rect x="285" y="0" width="85" height="60" rx="5" fill="#1d3557"/>
+        <rect x="295" y="10" width="40" height="8" rx="2" fill="#8892b0"/>
+        <text x="295" y="35" font-family="monospace" font-size="16" fill="#64ffda">1.2M</text>
+        <rect x="295" y="45" width="65" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+      </g>
+      
+      <!-- Charts row -->
+      <g transform="translate(0, 70)">
+        <!-- Line chart -->
+        <rect x="0" y="0" width="230" height="110" rx="5" fill="#1d3557"/>
+        <rect x="10" y="10" width="80" height="8" rx="2" fill="#e6f1ff"/>
+        
+        <!-- Line chart visualization -->
+        <g transform="translate(15, 30)">
+          <!-- Chart grid -->
+          <g stroke="#8892b0" stroke-width="0.5" opacity="0.3">
+            <line x1="0" y1="0" x2="200" y2="0"/>
+            <line x1="0" y1="20" x2="200" y2="20"/>
+            <line x1="0" y1="40" x2="200" y2="40"/>
+            <line x1="0" y1="60" x2="200" y2="60"/>
+            
+            <line x1="0" y1="0" x2="0" y2="60"/>
+            <line x1="40" y1="0" x2="40" y2="60"/>
+            <line x1="80" y1="0" x2="80" y2="60"/>
+            <line x1="120" y1="0" x2="120" y2="60"/>
+            <line x1="160" y1="0" x2="160" y2="60"/>
+            <line x1="200" y1="0" x2="200" y2="60"/>
+          </g>
+          
+          <!-- Chart line -->
+          <polyline points="0,40 40,35 80,45 120,20 160,10 200,25" fill="none" stroke="#64ffda" stroke-width="2"/>
+          
+          <!-- Data points -->
+          <circle cx="0" cy="40" r="3" fill="#64ffda"/>
+          <circle cx="40" cy="35" r="3" fill="#64ffda"/>
+          <circle cx="80" cy="45" r="3" fill="#64ffda"/>
+          <circle cx="120" cy="20" r="3" fill="#64ffda"/>
+          <circle cx="160" cy="10" r="3" fill="#64ffda"/>
+          <circle cx="200" cy="25" r="3" fill="#64ffda"/>
+          
+          <!-- Axis labels -->
+          <g fill="#8892b0" font-family="monospace" font-size="6">
+            <text x="0" y="70">Jan</text>
+            <text x="40" y="70">Feb</text>
+            <text x="80" y="70">Mar</text>
+            <text x="120" y="70">Apr</text>
+            <text x="160" y="70">May</text>
+            <text x="200" y="70">Jun</text>
+          </g>
+        </g>
+        
+        <!-- Pie chart -->
+        <rect x="240" y="0" width="130" height="110" rx="5" fill="#1d3557"/>
+        <rect x="250" y="10" width="80" height="8" rx="2" fill="#e6f1ff"/>
+        
+        <!-- Pie chart visualization -->
+        <g transform="translate(305, 60)">
+          <!-- Pie segments -->
+          <path d="M0,0 L0,-30 A30,30 0 0,1 26,-15 Z" fill="#64ffda"/>
+          <path d="M0,0 L26,-15 A30,30 0 0,1 15,26 Z" fill="#7b5cff" opacity="0.8"/>
+          <path d="M0,0 L15,26 A30,30 0 0,1 -30,0 Z" fill="#ff5c5c" opacity="0.8"/>
+          <path d="M0,0 L-30,0 A30,30 0 0,1 0,-30 Z" fill="#ffbd44" opacity="0.8"/>
+          
+          <!-- Center circle -->
+          <circle cx="0" cy="0" r="10" fill="#1d3557"/>
+        </g>
+        
+        <!-- Legend -->
+        <g transform="translate(250, 85)" font-family="monospace" font-size="6" fill="#8892b0">
+          <rect x="0" y="0" width="6" height="6" fill="#64ffda"/>
+          <text x="10" y="5">Product A</text>
+          
+          <rect x="0" y="10" width="6" height="6" fill="#7b5cff" opacity="0.8"/>
+          <text x="10" y="15">Product B</text>
+          
+          <rect x="60" y="0" width="6" height="6" fill="#ff5c5c" opacity="0.8"/>
+          <text x="70" y="5">Product C</text>
+          
+          <rect x="60" y="10" width="6" height="6" fill="#ffbd44" opacity="0.8"/>
+          <text x="70" y="15">Product D</text>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g>
+    <!-- Data visualization elements -->
+    <g transform="translate(20, 150)">
+      <!-- Bar chart -->
+      <g fill="#64ffda" opacity="0.3">
+        <rect x="0" y="0" width="8" height="20"/>
+        <rect x="10" y="5" width="8" height="15"/>
+        <rect x="20" y="10" width="8" height="10"/>
+        <rect x="30" y="0" width="8" height="20"/>
+        <rect x="40" y="8" width="8" height="12"/>
+      </g>
+    </g>
+    
+    <g transform="translate(450, 80)">
+      <!-- Scatter plot -->
+      <g fill="#64ffda" opacity="0.3">
+        <circle cx="0" cy="0" r="3"/>
+        <circle cx="10" cy="15" r="3"/>
+        <circle cx="20" cy="5" r="3"/>
+        <circle cx="5" cy="25" r="3"/>
+        <circle cx="15" cy="10" r="3"/>
+      </g>
+    </g>
+    
+    <!-- Decorative circles -->
+    <circle cx="30" cy="250" r="15" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="460" cy="200" r="20" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="400" cy="50" r="10" fill="#7b5cff" opacity="0.3"/>
+  </g>
+  
+  <!-- Tech stack labels -->
+  <g font-family="monospace" font-size="12" fill="#64ffda">
+    <text x="150" y="290" text-anchor="middle">Angular</text>
+    <text x="250" y="290" text-anchor="middle">D3.js</text>
+    <text x="350" y="290" text-anchor="middle">Firebase</text>
+  </g>
+</svg>

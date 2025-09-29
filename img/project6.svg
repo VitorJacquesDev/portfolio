@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#0a192f"/>
+  
+  <!-- Travel Guide App Illustration -->
+  <g transform="translate(100, 20)">
+    <!-- Mobile phone frame -->
+    <rect x="0" y="0" width="180" height="260" rx="20" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    <rect x="10" y="10" width="160" height="240" rx="10" fill="#0a192f"/>
+    
+    <!-- Phone details -->
+    <rect x="70" y="5" width="40" height="5" rx="2.5" fill="#8892b0"/>
+    <circle cx="90" cy="250" r="10" stroke="#8892b0" stroke-width="1" fill="none"/>
+    
+    <!-- App interface -->
+    <g transform="translate(20, 20)">
+      <!-- App header with map location -->
+      <rect x="0" y="0" width="140" height="40" rx="5" fill="#1d3557"/>
+      <circle cx="15" cy="20" r="8" fill="#64ffda" opacity="0.8"/>
+      <path d="M15,16 L15,24 M11,20 L19,20" stroke="#0a192f" stroke-width="1.5"/>
+      <rect x="30" y="12" width="70" height="8" rx="2" fill="#e6f1ff"/>
+      <rect x="30" y="24" width="50" height="6" rx="2" fill="#8892b0"/>
+      <circle cx="125" cy="20" r="5" fill="#8892b0"/>
+      
+      <!-- Map view -->
+      <rect x="0" y="50" width="140" height="90" rx="5" fill="#1d3557" opacity="0.7"/>
+      
+      <!-- Map elements -->
+      <g transform="translate(10, 60)">
+        <!-- Map background -->
+        <rect x="0" y="0" width="120" height="70" rx="3" fill="#0a192f"/>
+        
+        <!-- Map roads -->
+        <path d="M20,0 L20,70 M0,30 L120,30" stroke="#8892b0" stroke-width="1" opacity="0.5"/>
+        <path d="M60,0 L60,70" stroke="#8892b0" stroke-width="1" opacity="0.5" stroke-dasharray="2,2"/>
+        <path d="M0,50 L120,50" stroke="#8892b0" stroke-width="1" opacity="0.5" stroke-dasharray="2,2"/>
+        
+        <!-- Map locations -->
+        <circle cx="30" cy="20" r="5" fill="#64ffda" opacity="0.8"/>
+        <circle cx="80" cy="40" r="5" fill="#64ffda" opacity="0.8"/>
+        <circle cx="50" cy="60" r="5" fill="#ff5c5c" opacity="0.8"/>
+        
+        <!-- Route line -->
+        <path d="M30,20 Q55,25 80,40 Q65,50 50,60" stroke="#64ffda" stroke-width="2" fill="none" opacity="0.8" stroke-dasharray="3,2"/>
+        
+        <!-- Current location marker -->
+        <circle cx="50" cy="60" r="8" fill="none" stroke="#ff5c5c" opacity="0.5">
+          <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      
+      <!-- Location details -->
+      <g transform="translate(0, 150)">
+        <!-- Location card -->
+        <rect x="0" y="0" width="140" height="70" rx="5" fill="#1d3557"/>
+        
+        <!-- Location image -->
+        <rect x="10" y="10" width="50" height="50" rx="3" fill="#0a192f"/>
+        <circle cx="35" cy="25" r="8" fill="#ffbd44" opacity="0.8"/>
+        <path d="M25,40 L45,40 L35,30 Z" fill="#64ffda" opacity="0.8"/>
+        <path d="M15,50 L55,50 L45,35 L35,45 L25,35 Z" fill="#7b5cff" opacity="0.5"/>
+        
+        <!-- Location info -->
+        <rect x="70" y="10" width="60" height="10" rx="2" fill="#e6f1ff"/>
+        <rect x="70" y="25" width="50" height="6" rx="2" fill="#8892b0"/>
+        <rect x="70" y="35" width="40" height="6" rx="2" fill="#8892b0"/>
+        
+        <!-- Rating -->
+        <g transform="translate(70, 50)" fill="#64ffda">
+          <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="scale(0.5)"/>
+          <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(10, 0) scale(0.5)"/>
+          <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(20, 0) scale(0.5)"/>
+          <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(30, 0) scale(0.5)"/>
+          <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(40, 0) scale(0.5)" opacity="0.3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Travel elements -->
+  <g transform="translate(320, 50)">
+    <!-- Compass -->
+    <circle cx="40" cy="40" r="30" fill="#1d3557" stroke="#64ffda" stroke-width="1"/>
+    <circle cx="40" cy="40" r="3" fill="#64ffda"/>
+    <path d="M40,15 L40,25 M40,55 L40,65 M15,40 L25,40 M55,40 L65,40" stroke="#8892b0" stroke-width="1"/>
+    <path d="M40,40 L40,20" stroke="#ff5c5c" stroke-width="2"/>
+    <path d="M40,40 L55,55" stroke="#64ffda" stroke-width="2"/>
+    <text x="40" y="20" font-family="monospace" font-size="8" fill="#e6f1ff" text-anchor="middle">N</text>
+    <text x="40" y="65" font-family="monospace" font-size="8" fill="#e6f1ff" text-anchor="middle">S</text>
+    <text x="65" y="43" font-family="monospace" font-size="8" fill="#e6f1ff" text-anchor="middle">E</text>
+    <text x="15" y="43" font-family="monospace" font-size="8" fill="#e6f1ff" text-anchor="middle">W</text>
+    
+    <!-- Airplane -->
+    <g transform="translate(40, 120) rotate(45)">
+      <path d="M0,0 L30,0 L35,5 L30,10 L0,10 L-5,5 Z" fill="#64ffda" opacity="0.8"/>
+      <path d="M10,-5 L20,-5 L20,15 L10,15 Z" fill="#64ffda" opacity="0.8"/>
+      <circle cx="15" cy="5" r="3" fill="#0a192f"/>
+    </g>
+    
+    <!-- Camera -->
+    <g transform="translate(100, 40)">
+      <rect x="0" y="0" width="30" height="20" rx="2" fill="#64ffda" opacity="0.8"/>
+      <rect x="5" y="-5" width="20" height="5" rx="1" fill="#64ffda" opacity="0.8"/>
+      <circle cx="15" cy="10" r="6" fill="#0a192f"/>
+      <circle cx="15" cy="10" r="4" fill="#1d3557"/>
+      <circle cx="25" cy="5" r="2" fill="#ffbd44"/>
+    </g>
+    
+    <!-- Suitcase -->
+    <g transform="translate(100, 100)">
+      <rect x="0" y="0" width="30" height="25" rx="2" fill="#64ffda" opacity="0.8"/>
+      <rect x="5" y="-5" width="20" height="5" rx="1" fill="#64ffda" opacity="0.8"/>
+      <rect x="10" y="10" width="10" height="5" rx="1" fill="#0a192f"/>
+    </g>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g>
+    <!-- Clouds -->
+    <g fill="#64ffda" opacity="0.2">
+      <ellipse cx="50" cy="50" rx="20" ry="10"/>
+      <ellipse cx="450" cy="70" rx="15" ry="8"/>
+      <ellipse cx="400" cy="200" rx="25" ry="12"/>
+    </g>
+    
+    <!-- Decorative circles -->
+    <circle cx="50" cy="250" r="15" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="450" cy="150" r="20" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="350" cy="250" r="10" fill="#7b5cff" opacity="0.3"/>
+  </g>
+  
+  <!-- Tech stack labels -->
+  <g font-family="monospace" font-size="12" fill="#64ffda">
+    <text x="150" y="290" text-anchor="middle">Flutter</text>
+    <text x="250" y="290" text-anchor="middle">GraphQL</text>
+    <text x="350" y="290" text-anchor="middle">Maps API</text>
+  </g>
+</svg>
