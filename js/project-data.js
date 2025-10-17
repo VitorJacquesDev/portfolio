@@ -44,7 +44,7 @@ const projectsData = {
             'Exercise library with video demonstrations',
             'Goal setting and achievement system',
             'Push notifications for workout reminders',
-            'Offline mode with data synchronization'
+            'Data synchronization across devices'
         ],
         images: ['img/project2.svg', 'img/project2.svg'],
         thumbnail: 'img/project2.svg',
@@ -127,14 +127,14 @@ const projectsData = {
     'project6': {
         id: 'project6',
         title: 'Travel Guide App',
-        description: 'Travel guide app with interactive maps, personalized recommendations and offline features.',
-        longDescription: 'A feature-rich travel companion app built with Flutter. Discover new destinations, get personalized recommendations, navigate with interactive maps, and access all your travel information offline. The app integrates with various APIs to provide real-time information about attractions, restaurants, and local events.',
+        description: 'Travel guide app with interactive maps, personalized recommendations and real-time information.',
+        longDescription: 'A feature-rich travel companion app built with Flutter. Discover new destinations, get personalized recommendations, navigate with interactive maps, and access all your travel information. The app integrates with various APIs to provide real-time information about attractions, restaurants, and local events.',
         category: 'mobile',
         tags: ['Flutter', 'GraphQL', 'Maps API'],
         technologies: ['Flutter', 'Dart', 'GraphQL', 'Google Maps API', 'SQLite', 'Provider', 'Dio'],
         features: [
             'Interactive maps with custom markers',
-            'Offline map access and navigation',
+            'Real-time map navigation',
             'Personalized destination recommendations',
             'Local attractions and points of interest',
             'Restaurant and hotel reviews',

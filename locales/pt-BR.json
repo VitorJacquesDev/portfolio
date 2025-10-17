@@ -95,37 +95,61 @@
       "title": "E-commerce Website",
       "description": "Plataforma completa de e-commerce com painel administrativo, pagamentos online e sistema de gerenciamento de estoque.",
       "shortDesc": "Plataforma completa com painel admin e pagamentos",
-      "tags": ["React", "Node.js", "MongoDB"]
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ]
     },
     "project2": {
       "title": "Fitness App",
       "description": "Aplicativo móvel para acompanhamento de treinos, nutrição e progresso físico com recursos de comunidade.",
       "shortDesc": "Acompanhe treinos, nutrição e progresso",
-      "tags": ["React Native", "Firebase", "Redux"]
+      "tags": [
+        "React Native",
+        "Firebase",
+        "Redux"
+      ]
     },
     "project3": {
       "title": "Task Management System",
       "description": "Sistema de gerenciamento de tarefas e projetos com recursos de colaboração em tempo real e análise de produtividade.",
       "shortDesc": "Colaboração em tempo real e produtividade",
-      "tags": ["Vue.js", "Express", "PostgreSQL"]
+      "tags": [
+        "Vue.js",
+        "Express",
+        "PostgreSQL"
+      ]
     },
     "project4": {
       "title": "AI Chatbot",
       "description": "Chatbot inteligente com processamento de linguagem natural para atendimento ao cliente e automação de suporte.",
       "shortDesc": "Assistente inteligente com NLP",
-      "tags": ["Python", "TensorFlow", "NLP"]
+      "tags": [
+        "Python",
+        "TensorFlow",
+        "NLP"
+      ]
     },
     "project5": {
       "title": "Dashboard Analytics",
       "description": "Painel de análise de dados com visualizações interativas e relatórios personalizáveis para empresas.",
       "shortDesc": "Visualizações interativas de dados",
-      "tags": ["Angular", "D3.js", "Firebase"]
+      "tags": [
+        "Angular",
+        "D3.js",
+        "Firebase"
+      ]
     },
     "project6": {
       "title": "Travel Guide App",
-      "description": "Aplicativo de guia de viagens com mapas interativos, recomendações personalizadas e recursos offline.",
+      "description": "Aplicativo de guia de viagens com mapas interativos, recomendações personalizadas e informações em tempo real.",
       "shortDesc": "Mapas interativos e recomendações",
-      "tags": ["Flutter", "GraphQL", "Maps API"]
+      "tags": [
+        "Flutter",
+        "GraphQL",
+        "Maps API"
+      ]
     }
   },
   "contact": {

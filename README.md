@@ -12,7 +12,6 @@ Um site de portfólio moderno, responsivo e com tema escuro para programadores. 
 - **Modo Claro/Escuro**: Opção para alternar entre temas
 - **Multi-idiomas**: Suporte para Português, Inglês e Espanhol
 - **Analytics Integrado**: Rastreamento de eventos com Google Analytics 4
-- **PWA Ready**: Funciona offline e pode ser instalado como app
 - **Acessível**: Compatível com leitores de tela e navegação por teclado
 - **Performance Otimizado**: Lazy loading de imagens e monitoramento de performance
 

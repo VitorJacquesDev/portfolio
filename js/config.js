@@ -59,8 +59,6 @@ const AppConfig = {
 
     // Feature Flags
     features: {
-        enablePWA: true,
-        enableServiceWorker: true,
         enableLazyLoading: true,
         enableAnimations: true
     },
