@@ -2223,9 +2223,6 @@ footer {
     }
 }
 
-r: rgba(100, 255, 218, 0.3);
-}
-
 .project-card:hover::after {
     opacity: 0.05;
 }
@@ -2421,6 +2418,8 @@ textarea:focus {
 footer {
     background-color: var(--surface-color);
     padding-top: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
@@ -2467,6 +2466,8 @@ footer {
     color: var(--text-color-light);
     font-size: 0.9rem;
     transition: all var(--transition-normal);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .footer-links-column a:hover {

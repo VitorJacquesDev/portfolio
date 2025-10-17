@@ -465,7 +465,9 @@ class App {
      */
     handleSmoothScroll(e) {
         const targetId = e.currentTarget.getAttribute('href');
-        if (!targetId || targetId === '#') return;
+
+        // Don't handle external links, mailto, tel, etc.
+        if (!targetId || targetId === '#' || !targetId.startsWith('#')) return;
 
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
