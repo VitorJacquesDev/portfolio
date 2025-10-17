@@ -15,7 +15,7 @@ class AnalyticsManager {
             customDimensions: config.customDimensions || {},
             ...config
         };
-        
+
         this.initialized = false;
         this.consentGiven = false;
         this.queue = [];
@@ -84,10 +84,10 @@ class AnalyticsManager {
                 script.onload = () => {
                     // Initialize gtag
                     window.dataLayer = window.dataLayer || [];
-                    window.gtag = function() {
+                    window.gtag = function () {
                         window.dataLayer.push(arguments);
                     };
-                    
+
                     gtag('js', new Date());
                     gtag('config', this.config.trackingId, {
                         anonymize_ip: this.config.anonymizeIp,
@@ -144,7 +144,7 @@ class AnalyticsManager {
      */
     trackPageView(path = null) {
         const page = path || window.location.pathname + window.location.search;
-        
+
         this.trackEvent('page_view', {
             page_path: page,
             page_title: document.title,
@@ -168,8 +168,8 @@ class AnalyticsManager {
             if (!href) return;
 
             // Check if it's an outbound link
-            const isOutbound = href.startsWith('http') && 
-                              !href.includes(window.location.hostname);
+            const isOutbound = href.startsWith('http') &&
+                !href.includes(window.location.hostname);
 
             if (isOutbound) {
                 this.trackEvent('click', {
@@ -243,7 +243,7 @@ class AnalyticsManager {
             thresholds.forEach(threshold => {
                 if (scrollPercentage >= threshold && !tracked.has(threshold)) {
                     tracked.add(threshold);
-                    
+
                     this.trackEvent('scroll', {
                         event_category: 'engagement',
                         event_label: `${threshold}%`,
@@ -257,7 +257,7 @@ class AnalyticsManager {
         let scrollTimeout;
         window.addEventListener('scroll', () => {
             if (scrollTimeout) return;
-            
+
             scrollTimeout = setTimeout(() => {
                 checkScrollDepth();
                 scrollTimeout = null;
@@ -279,7 +279,7 @@ class AnalyticsManager {
             intervals.forEach(interval => {
                 if (timeOnPage >= interval && !tracked.has(interval)) {
                     tracked.add(interval);
-                    
+
                     this.trackEvent('timing', {
                         event_category: 'engagement',
                         event_label: `${interval}s`,
@@ -398,16 +398,15 @@ class AnalyticsManager {
      * Check cookie consent
      */
     checkCookieConsent() {
-        return localStorage.getItem('analytics-consent') === 'true';
+        return false;
     }
 
     /**
      * Grant cookie consent
      */
     grantConsent() {
-        localStorage.setItem('analytics-consent', 'true');
         this.consentGiven = true;
-        
+
         // Hide consent banner
         const banner = document.querySelector('.cookie-consent-banner');
         if (banner) {
@@ -423,9 +422,8 @@ class AnalyticsManager {
      * Deny cookie consent
      */
     denyConsent() {
-        localStorage.setItem('analytics-consent', 'false');
         this.consentGiven = false;
-        
+
         // Hide consent banner
         const banner = document.querySelector('.cookie-consent-banner');
         if (banner) {
@@ -457,9 +455,9 @@ class AnalyticsManager {
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(banner);
-        
+
         // Show banner with animation
         setTimeout(() => banner.classList.add('show'), 100);
     }
@@ -502,7 +500,7 @@ class AnalyticsManager {
     disable() {
         this.config.enabled = false;
         this.initialized = false;
-        
+
         // Disable Google Analytics
         if (this.config.trackingId) {
             window[`ga-disable-${this.config.trackingId}`] = true;
@@ -516,7 +514,7 @@ class AnalyticsManager {
      */
     enable() {
         this.config.enabled = true;
-        
+
         // Enable Google Analytics
         if (this.config.trackingId) {
             window[`ga-disable-${this.config.trackingId}`] = false;

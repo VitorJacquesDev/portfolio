@@ -1,6 +1,6 @@
 /**
  * Build Script for Portfolio Optimization
- * Minifies CSS and JavaScript files and adds cache busting
+ * Minifies CSS and JavaScript files
  * 
  * Usage: node build.js
  * 
@@ -34,8 +34,7 @@ const config = {
     'js/form-handler.js',
     'js/app.js'
   ],
-  outputDir: 'dist',
-  enableCacheBusting: false
+  outputDir: 'dist'
 };
 
 // Simple CSS minifier
@@ -68,7 +67,7 @@ function minifyJS(js) {
     .trim();
 }
 
-// Generate hash for cache busting
+// Generate hash for build version
 function generateHash(content) {
   return crypto.createHash('md5').update(content).digest('hex').substring(0, 8);
 }
@@ -96,15 +95,7 @@ function processCSS() {
       const minifiedSize = Buffer.byteLength(minified, 'utf8');
       const savings = ((1 - minifiedSize / originalSize) * 100).toFixed(2);
 
-      let outputFile = file;
-      if (config.enableCacheBusting) {
-        const hash = generateHash(minified);
-        const ext = path.extname(file);
-        const base = path.basename(file, ext);
-        const dir = path.dirname(file);
-        outputFile = path.join(dir, `${base}.${hash}${ext}`);
-      }
-
+      const outputFile = file;
       const outputPath = path.join(config.outputDir, outputFile);
       ensureDir(path.dirname(outputPath));
       fs.writeFileSync(outputPath, minified);
@@ -116,8 +107,7 @@ function processCSS() {
 
       processedFiles.push({
         original: file,
-        output: outputFile,
-        hash: config.enableCacheBusting ? generateHash(minified) : null
+        output: outputFile
       });
     } catch (error) {
       console.error(`✗ Error processing ${file}:`, error.message);
@@ -143,15 +133,7 @@ function processJS() {
       const minifiedSize = Buffer.byteLength(minified, 'utf8');
       const savings = ((1 - minifiedSize / originalSize) * 100).toFixed(2);
 
-      let outputFile = file;
-      if (config.enableCacheBusting) {
-        const hash = generateHash(minified);
-        const ext = path.extname(file);
-        const base = path.basename(file, ext);
-        const dir = path.dirname(file);
-        outputFile = path.join(dir, `${base}.${hash}${ext}`);
-      }
-
+      const outputFile = file;
       const outputPath = path.join(config.outputDir, outputFile);
       ensureDir(path.dirname(outputPath));
       fs.writeFileSync(outputPath, minified);
@@ -163,8 +145,7 @@ function processJS() {
 
       processedFiles.push({
         original: file,
-        output: outputFile,
-        hash: config.enableCacheBusting ? generateHash(minified) : null
+        output: outputFile
       });
     } catch (error) {
       console.error(`✗ Error processing ${file}:`, error.message);
@@ -236,7 +217,6 @@ function build() {
   console.log('🚀 Starting build process...\n');
   console.log('Configuration:');
   console.log(`  Output directory: ${config.outputDir}`);
-  console.log(`  Cache busting: ${config.enableCacheBusting ? 'enabled' : 'disabled'}`);
 
   // Clean output directory
   if (fs.existsSync(config.outputDir)) {

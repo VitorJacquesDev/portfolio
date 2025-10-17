@@ -22,7 +22,7 @@ class I18nManager {
    */
   async init() {
     try {
-      // Detect language from localStorage or browser
+      // Detect language from browser
       const detectedLang = this.detectLanguage();
       await this.setLanguage(detectedLang);
       return true;
@@ -36,15 +36,9 @@ class I18nManager {
 
   /**
    * Detect user's preferred language
-   * Priority: localStorage > browser language > default
+   * Priority: browser language > default
    */
   detectLanguage() {
-    // Check localStorage first
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && this.supportedLanguages.includes(savedLang)) {
-      return savedLang;
-    }
-
     // Check browser language
     const browserLang = navigator.language || navigator.userLanguage;
 
@@ -66,11 +60,6 @@ class I18nManager {
    * Load translation file for a specific language
    */
   async loadLanguage(lang) {
-    // Return cached translations if already loaded
-    if (this.translations[lang]) {
-      return this.translations[lang];
-    }
-
     try {
       const response = await fetch(`/locales/${lang}.json`);
 
@@ -110,9 +99,6 @@ class I18nManager {
       // Update current language
       const previousLang = this.currentLang;
       this.currentLang = lang;
-
-      // Save to localStorage
-      localStorage.setItem('preferredLanguage', lang);
 
       // Update HTML lang attribute
       document.documentElement.lang = lang;

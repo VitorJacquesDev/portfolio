@@ -639,12 +639,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 function showPWAInstallPrompt() {
-    // Don't show if already installed or dismissed
+    // Don't show if already installed
     if (window.matchMedia('(display-mode: standalone)').matches) {
-        return;
-    }
-
-    if (localStorage.getItem('pwa-install-dismissed')) {
         return;
     }
 
@@ -689,8 +685,6 @@ window.installPWA = async function () {
 };
 
 window.dismissPWAPrompt = function () {
-    localStorage.setItem('pwa-install-dismissed', 'true');
-
     const prompt = document.querySelector('.pwa-install-prompt');
     if (prompt) {
         prompt.classList.remove('show');
