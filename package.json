@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-website",
+  "version": "2.0.0",
+  "description": "Modern, responsive portfolio website with multi-language support",
+  "scripts": {
+    "build": "node build.js",
+    "build:prod": "node build.js",
+    "clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
+    "serve": "npx http-server . -p 8080 -c-1",
+    "serve:dist": "npx http-server dist -p 8080 -c-1"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "responsive",
+    "multi-language",
+    "pwa"
+  ],
+  "author": "Vitor de Melo Jacques",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

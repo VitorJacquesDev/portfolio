@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "title": "Portafolio | Desarrollador Full Stack",
+    "description": "Portafolio profesional de desarrollador full stack con proyectos, habilidades e información de contacto.",
+    "keywords": "desarrollador, programador, full stack, portafolio, web, móvil, frontend, backend",
+    "author": "Vitor de Melo Jacques"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy Vitor",
+    "title": "Desarrollador",
+    "titleHighlight": "Full Stack",
+    "subtitle": "Transformando ideas en experiencias digitales excepcionales",
+    "viewProjects": "Ver Proyectos",
+    "contactBtn": "Contacto",
+    "scrollDown": "Desplazar hacia abajo"
+  },
+  "about": {
+    "title": "Acerca de",
+    "titleHighlight": "Mí",
+    "heading": "Desarrollador Full Stack apasionado por crear soluciones innovadoras",
+    "paragraph1": "¡Hola! Soy un desarrollador full stack con experiencia en crear aplicaciones web modernas y responsivas. Mi pasión está en resolver problemas complejos y transformar ideas en productos digitales de alta calidad.",
+    "paragraph2": "Estudiando Análisis y Desarrollo de Sistemas, he trabajado con diversas tecnologías y frameworks, siempre buscando aprender y adaptarme a las nuevas tendencias del mercado.",
+    "nameLabel": "Nombre",
+    "name": "Vitor de Melo Jacques",
+    "emailLabel": "Correo",
+    "email": "vitorjacquesdev@gmail.com",
+    "locationLabel": "Ubicación",
+    "location": "Canoas, Rio Grande do Sul",
+    "educationLabel": "Educación",
+    "education": "Análisis y Desarrollo de Sistemas",
+    "downloadCV": "Descargar CV"
+  },
+  "skills": {
+    "title": "Mis",
+    "titleHighlight": "Habilidades",
+    "heading": "Tecnologías y herramientas que domino",
+    "description": "A lo largo de mi trayectoria como desarrollador, he adquirido competencia en diversas tecnologías y herramientas que me permiten crear soluciones completas y eficientes.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Herramientas"
+  },
+  "experience": {
+    "title": "Experiencia y",
+    "titleHighlight": "Educación",
+    "work": "Trabajo",
+    "education": "Educación",
+    "present": "Presente",
+    "job1": {
+      "title": "Desarrollador Full Stack",
+      "company": "Tech Solutions Inc.",
+      "period": "2022 - Presente",
+      "description": "Desarrollo de aplicaciones web escalables usando React, Node.js y MongoDB. Liderazgo de equipo de 3 desarrolladores e implementación de prácticas de CI/CD."
+    },
+    "job2": {
+      "title": "Desarrollador Frontend",
+      "company": "Digital Agency",
+      "period": "2020 - 2022",
+      "description": "Creación de interfaces responsivas y accesibles para diversos clientes. Trabajo con React, Vue.js y sistemas de diseño modernos."
+    },
+    "edu1": {
+      "title": "Análisis y Desarrollo de Sistemas",
+      "institution": "Universidad Tecnológica",
+      "period": "2019 - 2023",
+      "description": "Formación enfocada en desarrollo de software, arquitectura de sistemas y metodologías ágiles."
+    },
+    "edu2": {
+      "title": "Curso de Desarrollo Web Full Stack",
+      "institution": "Bootcamp Online",
+      "period": "2019",
+      "description": "Programa intensivo de 6 meses cubriendo HTML, CSS, JavaScript, React, Node.js y bases de datos."
+    }
+  },
+  "projects": {
+    "title": "Mis",
+    "titleHighlight": "Proyectos",
+    "filterAll": "Todos",
+    "filterWeb": "Web",
+    "filterMobile": "Móvil",
+    "filterOther": "Otros",
+    "demo": "Demo",
+    "code": "Código",
+    "viewMore": "Ver Más Proyectos",
+    "viewDetails": "Ver Detalles",
+    "noResults": "No se encontraron proyectos",
+    "noResultsDesc": "Intenta seleccionar una categoría diferente",
+    "project1": {
+      "title": "Sitio Web de E-commerce",
+      "description": "Plataforma completa de comercio electrónico con panel administrativo, pagos en línea y sistema de gestión de inventario.",
+      "shortDesc": "Plataforma completa con panel admin y pagos",
+      "tags": ["React", "Node.js", "MongoDB"]
+    },
+    "project2": {
+      "title": "App de Fitness",
+      "description": "Aplicación móvil para seguimiento de entrenamientos, nutrición y progreso físico con funciones de comunidad.",
+      "shortDesc": "Seguimiento de entrenamientos, nutrición y progreso",
+      "tags": ["React Native", "Firebase", "Redux"]
+    },
+    "project3": {
+      "title": "Sistema de Gestión de Tareas",
+      "description": "Sistema de gestión de tareas y proyectos con funciones de colaboración en tiempo real y análisis de productividad.",
+      "shortDesc": "Colaboración en tiempo real y productividad",
+      "tags": ["Vue.js", "Express", "PostgreSQL"]
+    },
+    "project4": {
+      "title": "Chatbot de IA",
+      "description": "Chatbot inteligente con procesamiento de lenguaje natural para atención al cliente y automatización de soporte.",
+      "shortDesc": "Asistente inteligente con NLP",
+      "tags": ["Python", "TensorFlow", "NLP"]
+    },
+    "project5": {
+      "title": "Panel de Análisis",
+      "description": "Panel de análisis de datos con visualizaciones interactivas e informes personalizables para empresas.",
+      "shortDesc": "Visualizaciones interactivas de datos",
+      "tags": ["Angular", "D3.js", "Firebase"]
+    },
+    "project6": {
+      "title": "App de Guía de Viajes",
+      "description": "Aplicación de guía de viajes con mapas interactivos, recomendaciones personalizadas y funciones sin conexión.",
+      "shortDesc": "Mapas interactivos y recomendaciones",
+      "tags": ["Flutter", "GraphQL", "Maps API"]
+    }
+  },
+  "contact": {
+    "title": "Ponte en",
+    "titleHighlight": "Contacto",
+    "heading": "¡Hablemos!",
+    "description": "Estoy disponible para proyectos freelance, oportunidades de trabajo o simplemente para intercambiar ideas sobre tecnología.",
+    "emailLabel": "Correo",
+    "email": "vitorjacquesdev@gmail.com",
+    "phoneLabel": "Teléfono",
+    "phone": "+55 (51) 99313-9530",
+    "locationLabel": "Ubicación",
+    "location": "Canoas, Rio Grande do Sul",
+    "formName": "Nombre",
+    "formEmail": "Correo",
+    "formSubject": "Asunto",
+    "formMessage": "Mensaje",
+    "formSubmit": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "successMessage": "¡Mensaje enviado con éxito! Me pondré en contacto pronto.",
+    "errorMessage": "Error al enviar el mensaje. Inténtalo de nuevo.",
+    "validation": {
+      "required": "Este campo es obligatorio",
+      "email": "Por favor, introduce un correo válido",
+      "minLength": "Este campo debe tener al menos {min} caracteres",
+      "maxLength": "Este campo no debe exceder {max} caracteres",
+      "formInvalid": "Por favor, corrige los errores antes de enviar"
+    }
+  },
+  "footer": {
+    "tagline": "Transformando ideas en experiencias digitales excepcionales",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "contactTitle": "Contacto",
+    "webDev": "Desarrollo Web",
+    "mobileDev": "Desarrollo Móvil",
+    "uiux": "Diseño UI/UX",
+    "consulting": "Consultoría",
+    "copyright": "© 2023 DevPortfolio. Todos los derechos reservados."
+  }
+}

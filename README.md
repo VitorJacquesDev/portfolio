@@ -10,6 +10,11 @@ Um site de portfólio moderno, responsivo e com tema escuro para programadores. 
 - **Seções Completas**: Inclui áreas para apresentação, sobre, habilidades, projetos e contato
 - **Ilustrações SVG**: Gráficos vetoriais personalizados para cada projeto
 - **Modo Claro/Escuro**: Opção para alternar entre temas
+- **Multi-idiomas**: Suporte para Português, Inglês e Espanhol
+- **Analytics Integrado**: Rastreamento de eventos com Google Analytics 4
+- **PWA Ready**: Funciona offline e pode ser instalado como app
+- **Acessível**: Compatível com leitores de tela e navegação por teclado
+- **Performance Otimizado**: Lazy loading de imagens e monitoramento de performance
 
 ## Tecnologias Utilizadas
 
@@ -44,6 +49,22 @@ Um site de portfólio moderno, responsivo e com tema escuro para programadores. 
 1. Clone este repositório ou faça o download dos arquivos
 2. Abra o arquivo `index.html` em seu navegador para visualizar o site
 3. Personalize o conteúdo editando os arquivos HTML, CSS e JavaScript conforme necessário
+
+## Configuração do Analytics
+
+Para habilitar o rastreamento com Google Analytics:
+
+1. Obtenha seu ID de rastreamento do Google Analytics 4 (formato: `G-XXXXXXXXXX`)
+2. Abra o arquivo `js/config.js`
+3. Atualize a configuração do analytics:
+
+```javascript
+analytics: {
+    trackingId: 'G-XXXXXXXXXX', // Seu ID de rastreamento
+    enabled: true,               // Habilitar analytics
+    // ... outras configurações
+}
+```
 
 ## Personalização
 

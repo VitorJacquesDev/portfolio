@@ -1,0 +1,65 @@
+{
+  "buildTime": "2025-10-15T22:21:08.496Z",
+  "version": "41ab38df",
+  "files": {
+    "css": [
+      {
+        "original": "css/themes.css",
+        "output": "css\\themes.70e78eb1.css",
+        "hash": "70e78eb1"
+      },
+      {
+        "original": "css/animations.css",
+        "output": "css\\animations.76dea479.css",
+        "hash": "76dea479"
+      },
+      {
+        "original": "css/style.css",
+        "output": "css\\style.7422724e.css",
+        "hash": "7422724e"
+      }
+    ],
+    "js": [
+      {
+        "original": "js/theme-manager.js",
+        "output": "js\\theme-manager.a7dfa58a.js",
+        "hash": "a7dfa58a"
+      },
+      {
+        "original": "js/i18n.js",
+        "output": "js\\i18n.2c13eb94.js",
+        "hash": "2c13eb94"
+      },
+      {
+        "original": "js/animation-controller.js",
+        "output": "js\\animation-controller.bde7fa2b.js",
+        "hash": "bde7fa2b"
+      },
+      {
+        "original": "js/lazy-loader.js",
+        "output": "js\\lazy-loader.3a7f77a8.js",
+        "hash": "3a7f77a8"
+      },
+      {
+        "original": "js/project-data.js",
+        "output": "js\\project-data.d46e34aa.js",
+        "hash": "d46e34aa"
+      },
+      {
+        "original": "js/project-modal.js",
+        "output": "js\\project-modal.d9bf55eb.js",
+        "hash": "d9bf55eb"
+      },
+      {
+        "original": "js/form-handler.js",
+        "output": "js\\form-handler.865f8173.js",
+        "hash": "865f8173"
+      },
+      {
+        "original": "js/script.js",
+        "output": "js\\script.b1016197.js",
+        "hash": "b1016197"
+      }
+    ]
+  }
+}

@@ -1,0 +1,629 @@
+/* ===== RESPONSIVE DESIGN FIXES ===== */
+/* This file contains additional responsive fixes and improvements */
+
+/* ===== GENERAL RESPONSIVE IMPROVEMENTS ===== */
+
+/* Prevent horizontal overflow on all devices */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Ensure all containers respect viewport width */
+* {
+    max-width: 100%;
+}
+
+/* Improve touch targets for mobile - minimum 44x44px */
+@media (max-width: 768px) {
+    button,
+    a.btn,
+    .lang-btn,
+    .theme-toggle,
+    .mobile-menu-btn,
+    .filter-btn,
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+    
+    /* Ensure nav links are touch-friendly */
+    .desktop-nav a,
+    .mobile-nav a {
+        padding: 12px 16px;
+        display: inline-block;
+    }
+}
+
+/* ===== HEADER RESPONSIVE FIXES ===== */
+
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    header {
+        padding: 1.25rem var(--spacing-md);
+    }
+    
+    .desktop-nav ul {
+        gap: 1.5rem;
+    }
+    
+    .desktop-nav a {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile header improvements */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem var(--spacing-sm);
+        flex-wrap: nowrap;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: transparent;
+        border: none;
+        padding: 8px;
+    }
+    
+    .header-controls {
+        gap: 0.75rem;
+    }
+    
+    /* Ensure language switcher doesn't overflow */
+    .language-switcher {
+        padding: 0.2rem;
+        gap: 0.3rem;
+    }
+    
+    .lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .flag-icon {
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile header */
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1rem;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lang-btn {
+        padding: 0.35rem 0.5rem;
+    }
+}
+
+/* ===== HERO SECTION RESPONSIVE FIXES ===== */
+
+/* Desktop optimization */
+@media (min-width: 1441px) {
+    .hero-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+/* Tablet landscape */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .hero-content {
+        gap: var(--spacing-lg);
+    }
+    
+    .hero-text h1 {
+        font-size: clamp(2.5rem, 4vw, 3rem);
+    }
+    
+    .image-container {
+        max-width: 400px;
+    }
+}
+
+/* Tablet portrait and mobile */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .hero-text {
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .hero-text h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        margin: 0 auto var(--spacing-md);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto var(--spacing-md);
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .scroll-down {
+        display: none;
+    }
+}
+
+/* Small mobile hero */
+@media (max-width: 480px) {
+    .hero-text h4 {
+        font-size: 1rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-text p {
+        font-size: 0.95rem;
+    }
+    
+    .hero-image {
+        max-width: 250px;
+    }
+}
+
+/* ===== ABOUT SECTION RESPONSIVE FIXES ===== */
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .about-content {
+        gap: var(--spacing-lg);
+    }
+    
+    .about-image img {
+        max-width: 350px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .about-image {
+        order: 1;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-image img {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .about-details {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .about-text .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+    }
+}
+
+/* ===== SKILLS SECTION RESPONSIVE FIXES ===== */
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--spacing-sm);
+    }
+    
+    .skill-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .skill-card i {
+        font-size: 2rem;
+    }
+    
+    .skill-card h4 {
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .skill-card i {
+        font-size: 1.75rem;
+    }
+    
+    .skill-card h4 {
+        font-size: 0.95rem;
+    }
+}
+
+/* ===== TIMELINE RESPONSIVE FIXES ===== */
+
+/* Ensure timeline is fully responsive */
+@media (max-width: 1024px) {
+    .timeline {
+        padding-left: 0;
+    }
+    
+    .timeline-item {
+        padding-left: 70px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        padding-left: 55px !important;
+        padding-right: var(--spacing-sm) !important;
+    }
+    
+    .timeline-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .timeline-date {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-item {
+        padding-left: 50px !important;
+    }
+    
+    .timeline-marker {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    
+    .timeline-marker i {
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== PROJECTS SECTION RESPONSIVE FIXES ===== */
+
+/* Large desktop */
+@media (min-width: 1441px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+}
+
+/* Desktop */
+@media (max-width: 1440px) and (min-width: 1025px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: var(--spacing-md);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .projects-filter {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .project-card {
+        max-width: 100%;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== CONTACT SECTION RESPONSIVE FIXES ===== */
+
+/* Mobile form improvements */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-form {
+        width: 100%;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 14px;
+    }
+    
+    .form-group textarea {
+        min-height: 150px;
+    }
+    
+    .contact-form .btn {
+        width: 100%;
+    }
+}
+
+/* ===== MODAL RESPONSIVE FIXES ===== */
+
+/* Tablet modal */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .modal-content {
+        width: 85%;
+        max-width: 700px;
+    }
+}
+
+/* Mobile modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 20px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+    
+    .modal-body {
+        padding: var(--spacing-sm);
+    }
+    
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Small mobile modal */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        margin: 10px;
+        max-height: calc(100vh - 20px);
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .modal-gallery-nav button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ===== FOOTER RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px) {
+    footer {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* ===== UTILITY CLASSES FOR RESPONSIVE TESTING ===== */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Hide on tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Show only on mobile */
+.show-mobile {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* ===== LANDSCAPE ORIENTATION FIXES ===== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 80px 0 40px;
+    }
+    
+    .hero-content {
+        flex-direction: row;
+        gap: var(--spacing-md);
+    }
+    
+    .hero-image {
+        max-width: 250px;
+    }
+    
+    .scroll-down {
+        display: none;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    header,
+    .mobile-nav,
+    .scroll-down,
+    .theme-toggle,
+    .language-switcher,
+    .mobile-menu-btn,
+    .projects-filter,
+    .contact-form,
+    footer {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ===== HIGH DPI DISPLAYS ===== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure images look sharp on retina displays */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* ===== ACCESSIBILITY - LARGE TEXT MODE ===== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #00ff9f;
+        --text-color: #ffffff;
+        --background-color: #000000;
+    }
+    
+    .btn,
+    .project-card,
+    .skill-card,
+    .timeline-content {
+        border-width: 2px;
+    }
+}
+
+/* ===== SAFE AREA INSETS FOR NOTCHED DEVICES ===== */
+
+@supports (padding: max(0px)) {
+    header {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+    }
+    
+    .container {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+    }
+    
+    .mobile-nav {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+    }
+}

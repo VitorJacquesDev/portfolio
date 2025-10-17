@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#0a192f"/>
+  
+  <!-- E-commerce Website Illustration -->
+  <g transform="translate(50, 30)">
+    <!-- Browser window -->
+    <rect x="0" y="0" width="400" height="240" rx="8" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    
+    <!-- Browser header -->
+    <rect x="0" y="0" width="400" height="30" rx="8 8 0 0" fill="#1d3557"/>
+    <circle cx="20" cy="15" r="5" fill="#ff5c5c"/>
+    <circle cx="40" cy="15" r="5" fill="#ffbd44"/>
+    <circle cx="60" cy="15" r="5" fill="#00ca4e"/>
+    <rect x="80" y="10" width="240" height="10" rx="5" fill="#8892b0"/>
+    
+    <!-- E-commerce layout -->
+    <g transform="translate(20, 40)">
+      <!-- Navigation bar -->
+      <rect x="0" y="0" width="360" height="30" rx="4" fill="#1d3557"/>
+      <circle cx="20" cy="15" r="10" fill="#64ffda" opacity="0.8"/>
+      <rect x="40" y="10" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="90" y="10" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="140" y="10" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="190" y="10" width="40" height="10" rx="2" fill="#8892b0"/>
+      <rect x="320" y="10" width="20" height="10" rx="5" fill="#64ffda" opacity="0.8"/>
+      
+      <!-- Hero section -->
+      <rect x="0" y="40" width="360" height="80" rx="4" fill="#1d3557" opacity="0.7"/>
+      <rect x="20" y="60" width="150" height="10" rx="2" fill="#e6f1ff"/>
+      <rect x="20" y="80" width="100" height="10" rx="2" fill="#8892b0"/>
+      <rect x="20" y="100" width="80" height="10" rx="5" fill="#64ffda" opacity="0.8"/>
+      
+      <!-- Product grid -->
+      <g>
+        <!-- Row 1 -->
+        <rect x="0" y="130" width="115" height="80" rx="4" fill="#1d3557"/>
+        <rect x="10" y="140" width="95" height="50" rx="2" fill="#0a192f"/>
+        <rect x="10" y="195" width="70" height="8" rx="2" fill="#e6f1ff"/>
+        
+        <rect x="122.5" y="130" width="115" height="80" rx="4" fill="#1d3557"/>
+        <rect x="132.5" y="140" width="95" height="50" rx="2" fill="#0a192f"/>
+        <rect x="132.5" y="195" width="70" height="8" rx="2" fill="#e6f1ff"/>
+        
+        <rect x="245" y="130" width="115" height="80" rx="4" fill="#1d3557"/>
+        <rect x="255" y="140" width="95" height="50" rx="2" fill="#0a192f"/>
+        <rect x="255" y="195" width="70" height="8" rx="2" fill="#e6f1ff"/>
+      </g>
+    </g>
+    
+    <!-- Decorative elements -->
+    <g>
+      <!-- Shopping cart icon -->
+      <g transform="translate(300, 100)" fill="none" stroke="#64ffda" stroke-width="2">
+        <circle cx="10" cy="20" r="5"/>
+        <circle cx="25" cy="20" r="5"/>
+        <path d="M0,0 L5,0 L10,15 L30,15 L35,5 L15,5" />
+      </g>
+      
+      <!-- Dollar sign -->
+      <g transform="translate(350, 180)" fill="#64ffda" opacity="0.7">
+        <path d="M10,0 L10,25 M5,5 C5,5 0,5 0,10 C0,15 10,15 10,15 C10,15 20,15 20,20 C20,25 15,25 15,25 M5,25 L15,25" stroke="#64ffda" stroke-width="2" fill="none"/>
+      </g>
+      
+      <!-- Star ratings -->
+      <g transform="translate(50, 180)" fill="#64ffda">
+        <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="scale(0.8)"/>
+        <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(15, 0) scale(0.8)"/>
+        <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(30, 0) scale(0.8)"/>
+        <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(45, 0) scale(0.8)"/>
+        <path d="M0,0 L2,5 L7,6 L3.5,10 L4,15 L0,13 L-4,15 L-3.5,10 L-7,6 L-2,5 Z" transform="translate(60, 0) scale(0.8)" opacity="0.3"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Tech stack labels -->
+  <g font-family="monospace" font-size="12" fill="#64ffda">
+    <text x="150" y="290" text-anchor="middle">React</text>
+    <text x="250" y="290" text-anchor="middle">Node.js</text>
+    <text x="350" y="290" text-anchor="middle">MongoDB</text>
+  </g>
+</svg>

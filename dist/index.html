@@ -44,12 +44,11 @@
         content="Portfólio profissional de desenvolvedor full stack com projetos, habilidades e informações de contato.">
     <meta name="twitter:image" content="https://seudominio.com/img/profile.svg">
 
-    <!-- Stylesheets - Load in order: themes, animations, main styles, responsive fixes, performance -->
+    <!-- Stylesheets - Load in order: themes, animations, main styles, responsive fixes -->
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive-fixes.css">
-    <link rel="stylesheet" href="css/performance-optimizations.css">
 
     <!-- Inline critical styles for app error -->
     <style>
@@ -108,14 +107,9 @@
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous">
-    <link rel="preload"
+    <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap"
-            rel="stylesheet">
-    </noscript>
+        rel="stylesheet">
 </head>
 
 <body>
@@ -154,7 +148,31 @@
                         <span class="lang-text">ES</span>
                     </button>
                 </div>
-
+                <button class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+                        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
                 <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false"
                     aria-controls="mobile-navigation">
                     <div class="bar"></div>
@@ -203,8 +221,7 @@
                 <div class="hero-image">
                     <div class="image-container scale-in stagger-3">
                         <div class="blob" aria-hidden="true"></div>
-                        <img src="img/profile.svg" alt="Vitor - Full Stack Developer profile illustration" width="500"
-                            height="500">
+                        <img src="img/profile.svg" alt="Vitor - Full Stack Developer profile illustration">
                     </div>
                 </div>
             </div>
@@ -231,8 +248,7 @@
             <div class="about-content">
                 <div class="about-image scroll-reveal-left">
                     <img data-src="img/about.svg" alt="About Me"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                        width="400" height="300">
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                 </div>
                 <div class="about-text scroll-reveal-right">
                     <h3 data-i18n="about.heading">Desenvolvedor Full Stack apaixonado por criar soluções inovadoras</h3>
@@ -531,8 +547,7 @@
                     role="listitem">
                     <div class="project-img">
                         <img data-src="img/project1.svg" alt="E-commerce Website project screenshot"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay" aria-hidden="true">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -574,8 +589,7 @@
                     data-project-id="project2">
                     <div class="project-img">
                         <img data-src="img/project2.svg" alt="Fitness App"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -615,8 +629,7 @@
                 <div class="project-card scroll-reveal-scale stagger-3" data-category="web" data-project-id="project3">
                     <div class="project-img">
                         <img data-src="img/project3.svg" alt="Task Management System"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -657,8 +670,7 @@
                     data-project-id="project4">
                     <div class="project-img">
                         <img data-src="img/project4.svg" alt="AI Chatbot"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -698,8 +710,7 @@
                 <div class="project-card scroll-reveal-scale stagger-5" data-category="web" data-project-id="project5">
                     <div class="project-img">
                         <img data-src="img/project5.svg" alt="Dashboard Analytics"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -740,8 +751,7 @@
                     data-project-id="project6">
                     <div class="project-img">
                         <img data-src="img/project6.svg" alt="Travel Guide App"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                            width="400" height="300">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -935,6 +945,7 @@
 
     <!-- Core utilities and managers -->
     <script src="js/i18n.js"></script>
+    <script src="js/theme-manager.js"></script>
     <script src="js/animation-controller.js"></script>
 
     <!-- Feature modules -->
@@ -944,6 +955,9 @@
     <script src="js/project-data.js"></script>
     <script src="js/project-modal.js"></script>
     <script src="js/form-handler.js"></script>
+
+    <!-- Legacy script (for backward compatibility) -->
+    <script src="js/script.js"></script>
 
     <!-- Main application controller - loads last to coordinate all modules -->
     <script src="js/app.js"></script>

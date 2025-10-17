@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <!-- Background shape -->
+  <rect width="500" height="500" fill="none"/>
+  
+  <!-- Developer illustration -->
+  <g transform="translate(50, 30)">
+    <!-- Computer/Laptop -->
+    <rect x="100" y="200" width="200" height="140" rx="10" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    <rect x="110" y="210" width="180" height="110" rx="5" fill="#0a192f"/>
+    <rect x="70" y="340" width="260" height="10" rx="5" fill="#112240" stroke="#64ffda" stroke-width="1"/>
+    
+    <!-- Code on screen -->
+    <g fill="#64ffda" font-family="monospace" font-size="8">
+      <text x="120" y="230">function developer() {</text>
+      <text x="130" y="245">  const skills = [</text>
+      <text x="140" y="260">    'HTML', 'CSS',</text>
+      <text x="140" y="275">    'JavaScript', 'React',</text>
+      <text x="140" y="290">    'Node.js', 'Python'</text>
+      <text x="130" y="305">  ];</text>
+      <text x="120" y="320">}</text>
+    </g>
+    
+    <!-- Person -->
+    <g transform="translate(200, 150)">
+      <!-- Head -->
+      <circle cx="0" cy="0" r="40" fill="#8892b0"/>
+      <circle cx="-15" cy="-10" r="5" fill="#0a192f"/>
+      <circle cx="15" cy="-10" r="5" fill="#0a192f"/>
+      <path d="M-10,15 Q0,25 10,15" stroke="#0a192f" stroke-width="2" fill="none"/>
+      
+      <!-- Hair -->
+      <path d="M-40,-5 Q-30,-40 0,-45 Q30,-40 40,-5 Q30,-15 0,-20 Q-30,-15 -40,-5" fill="#0a192f"/>
+      
+      <!-- Headphones -->
+      <path d="M-45,-5 L-50,0 L-50,20 L-40,20 L-40,0 L-45,-5" fill="#64ffda"/>
+      <path d="M45,-5 L50,0 L50,20 L40,20 L40,0 L45,-5" fill="#64ffda"/>
+      <path d="M-45,-5 Q-30,-50 0,-55 Q30,-50 45,-5" fill="none" stroke="#64ffda" stroke-width="2"/>
+      
+      <!-- Body/Shoulders -->
+      <path d="M-40,40 L-30,120 L30,120 L40,40" fill="#64ffda"/>
+      <rect x="-30" y="120" width="60" height="10" fill="#112240"/>
+    </g>
+    
+    <!-- Decorative elements -->
+    <g fill="#7b5cff">
+      <circle cx="50" cy="100" r="10" opacity="0.5"/>
+      <circle cx="350" cy="150" r="15" opacity="0.5"/>
+      <circle cx="320" cy="80" r="8" opacity="0.5"/>
+      <circle cx="80" cy="250" r="12" opacity="0.5"/>
+    </g>
+    
+    <!-- Code symbols floating -->
+    <g fill="#64ffda" font-family="monospace" font-weight="bold">
+      <text x="30" y="150" font-size="20" opacity="0.7">{}</text>
+      <text x="330" y="120" font-size="24" opacity="0.7">;</text>
+      <text x="350" y="200" font-size="20" opacity="0.7">()</text>
+      <text x="60" y="200" font-size="24" opacity="0.7">[]</text>
+      <text x="300" y="250" font-size="20" opacity="0.7">&lt;/&gt;</text>
+    </g>
+  </g>
+</svg>

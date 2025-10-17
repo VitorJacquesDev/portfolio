@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300">
+  <!-- Background -->
+  <rect width="500" height="300" fill="#0a192f"/>
+  
+  <!-- Task Management System Illustration -->
+  <g transform="translate(50, 30)">
+    <!-- Dashboard layout -->
+    <rect x="0" y="0" width="400" height="240" rx="8" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    
+    <!-- App header -->
+    <rect x="0" y="0" width="400" height="40" rx="8 8 0 0" fill="#1d3557"/>
+    <circle cx="20" cy="20" r="10" fill="#64ffda" opacity="0.8"/>
+    <rect x="40" y="15" width="100" height="10" rx="2" fill="#e6f1ff"/>
+    <circle cx="370" cy="20" r="8" fill="#8892b0"/>
+    <circle cx="345" cy="20" r="8" fill="#8892b0"/>
+    
+    <!-- Sidebar -->
+    <rect x="0" y="40" width="80" height="200" fill="#1d3557"/>
+    
+    <!-- Sidebar menu items -->
+    <g fill="#8892b0">
+      <rect x="15" y="60" width="50" height="8" rx="2"/>
+      <rect x="15" y="90" width="50" height="8" rx="2"/>
+      <rect x="15" y="120" width="50" height="8" rx="2"/>
+      <rect x="15" y="150" width="50" height="8" rx="2"/>
+      <rect x="15" y="180" width="50" height="8" rx="2"/>
+    </g>
+    
+    <!-- Main content area -->
+    <g transform="translate(90, 50)">
+      <!-- Page title -->
+      <rect x="10" y="0" width="120" height="15" rx="2" fill="#e6f1ff"/>
+      
+      <!-- Stats cards -->
+      <g transform="translate(0, 25)">
+        <!-- Card 1 -->
+        <rect x="10" y="0" width="90" height="60" rx="5" fill="#1d3557"/>
+        <rect x="20" y="10" width="50" height="8" rx="2" fill="#8892b0"/>
+        <text x="20" y="35" font-family="monospace" font-size="16" fill="#64ffda">24</text>
+        <rect x="20" y="45" width="30" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+        
+        <!-- Card 2 -->
+        <rect x="110" y="0" width="90" height="60" rx="5" fill="#1d3557"/>
+        <rect x="120" y="10" width="50" height="8" rx="2" fill="#8892b0"/>
+        <text x="120" y="35" font-family="monospace" font-size="16" fill="#64ffda">8</text>
+        <rect x="120" y="45" width="30" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+        
+        <!-- Card 3 -->
+        <rect x="210" y="0" width="90" height="60" rx="5" fill="#1d3557"/>
+        <rect x="220" y="10" width="50" height="8" rx="2" fill="#8892b0"/>
+        <text x="220" y="35" font-family="monospace" font-size="16" fill="#64ffda">16</text>
+        <rect x="220" y="45" width="30" height="5" rx="2" fill="#8892b0" opacity="0.5"/>
+      </g>
+      
+      <!-- Task board -->
+      <g transform="translate(0, 95)">
+        <!-- Column headers -->
+        <g>
+          <rect x="10" y="0" width="90" height="10" rx="2" fill="#8892b0" opacity="0.5"/>
+          <rect x="110" y="0" width="90" height="10" rx="2" fill="#8892b0" opacity="0.5"/>
+          <rect x="210" y="0" width="90" height="10" rx="2" fill="#8892b0" opacity="0.5"/>
+        </g>
+        
+        <!-- To Do Column -->
+        <g transform="translate(10, 15)">
+          <!-- Task card 1 -->
+          <rect x="0" y="0" width="90" height="35" rx="3" fill="#1d3557"/>
+          <rect x="5" y="5" width="60" height="8" rx="2" fill="#e6f1ff"/>
+          <rect x="5" y="18" width="80" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <rect x="5" y="25" width="40" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <circle cx="80" cy="25" r="5" fill="#64ffda" opacity="0.8"/>
+          
+          <!-- Task card 2 -->
+          <rect x="0" y="40" width="90" height="35" rx="3" fill="#1d3557"/>
+          <rect x="5" y="45" width="70" height="8" rx="2" fill="#e6f1ff"/>
+          <rect x="5" y="58" width="80" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <rect x="5" y="65" width="50" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <circle cx="80" cy="65" r="5" fill="#ff5c5c" opacity="0.8"/>
+        </g>
+        
+        <!-- In Progress Column -->
+        <g transform="translate(110, 15)">
+          <!-- Task card 1 -->
+          <rect x="0" y="0" width="90" height="35" rx="3" fill="#1d3557"/>
+          <rect x="5" y="5" width="65" height="8" rx="2" fill="#e6f1ff"/>
+          <rect x="5" y="18" width="80" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <rect x="5" y="25" width="45" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <circle cx="80" cy="25" r="5" fill="#ffbd44" opacity="0.8"/>
+          
+          <!-- Progress bar -->
+          <rect x="5" y="32" width="80" height="3" rx="1.5" fill="#0a192f"/>
+          <rect x="5" y="32" width="50" height="3" rx="1.5" fill="#64ffda"/>
+        </g>
+        
+        <!-- Completed Column -->
+        <g transform="translate(210, 15)">
+          <!-- Task card 1 -->
+          <rect x="0" y="0" width="90" height="35" rx="3" fill="#1d3557"/>
+          <rect x="5" y="5" width="55" height="8" rx="2" fill="#e6f1ff"/>
+          <rect x="5" y="18" width="80" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <rect x="5" y="25" width="35" height="4" rx="1" fill="#8892b0" opacity="0.5"/>
+          <circle cx="80" cy="25" r="5" fill="#00ca4e" opacity="0.8"/>
+          
+          <!-- Checkmark -->
+          <path d="M75,25 L78,28 L85,21" stroke="#0a192f" stroke-width="1.5" fill="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g>
+    <!-- Floating task cards -->
+    <g transform="translate(20, 100) rotate(-15)">
+      <rect x="0" y="0" width="60" height="30" rx="3" fill="#64ffda" opacity="0.2" stroke="#64ffda" stroke-width="1"/>
+      <rect x="5" y="5" width="40" height="5" rx="2" fill="#64ffda" opacity="0.5"/>
+      <rect x="5" y="15" width="50" height="3" rx="1.5" fill="#64ffda" opacity="0.5"/>
+      <rect x="5" y="22" width="30" height="3" rx="1.5" fill="#64ffda" opacity="0.5"/>
+    </g>
+    
+    <g transform="translate(430, 80) rotate(10)">
+      <rect x="0" y="0" width="60" height="30" rx="3" fill="#64ffda" opacity="0.2" stroke="#64ffda" stroke-width="1"/>
+      <rect x="5" y="5" width="40" height="5" rx="2" fill="#64ffda" opacity="0.5"/>
+      <rect x="5" y="15" width="50" height="3" rx="1.5" fill="#64ffda" opacity="0.5"/>
+      <rect x="5" y="22" width="30" height="3" rx="1.5" fill="#64ffda" opacity="0.5"/>
+    </g>
+    
+    <!-- Decorative circles -->
+    <circle cx="30" cy="200" r="15" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="460" cy="150" r="20" fill="#7b5cff" opacity="0.3"/>
+    <circle cx="450" cy="250" r="10" fill="#7b5cff" opacity="0.3"/>
+  </g>
+  
+  <!-- Tech stack labels -->
+  <g font-family="monospace" font-size="12" fill="#64ffda">
+    <text x="150" y="290" text-anchor="middle">Vue.js</text>
+    <text x="250" y="290" text-anchor="middle">Express</text>
+    <text x="350" y="290" text-anchor="middle">PostgreSQL</text>
+  </g>
+</svg>

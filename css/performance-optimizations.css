@@ -1,0 +1,256 @@
+/**
+ * Performance Optimizations CSS
+ * Fixes for CLS, LCP, and rendering performance
+ */
+
+/* ===== PREVENT CUMULATIVE LAYOUT SHIFT (CLS) ===== */
+
+/* Reserve space for all images */
+img {
+    content-visibility: auto;
+}
+
+/* Ensure images with explicit dimensions maintain aspect ratio */
+img[width][height] {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+/* Hero section image container - fixed dimensions */
+.hero-image .image-container {
+    min-height: 400px;
+}
+
+/* About section image - fixed dimensions */
+.about-image {
+    min-height: 300px;
+}
+
+/* Project cards - fixed aspect ratio */
+.project-card {
+    contain: layout style paint;
+}
+
+/* ===== OPTIMIZE FONT LOADING ===== */
+
+/* Prevent FOIT (Flash of Invisible Text) */
+body {
+    font-display: swap;
+}
+
+/* ===== OPTIMIZE ANIMATIONS ===== */
+
+/* Use will-change sparingly and only when needed */
+.project-card:hover {
+    will-change: transform;
+}
+
+.project-card:not(:hover) {
+    will-change: auto;
+}
+
+/* Use transform and opacity for animations (GPU accelerated) */
+.fade-in-up,
+.fade-in-down,
+.fade-in-left,
+.fade-in-right {
+    will-change: transform, opacity;
+}
+
+.fade-in-up.animate-in,
+.fade-in-down.animate-in,
+.fade-in-left.animate-in,
+.fade-in-right.animate-in {
+    will-change: auto;
+}
+
+/* ===== REDUCE PAINT AREAS ===== */
+
+/* Isolate animated elements */
+.scroll-down,
+.blob,
+.timeline-marker {
+    isolation: isolate;
+}
+
+/* ===== OPTIMIZE SCROLLING ===== */
+
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* ===== CONTENT VISIBILITY ===== */
+
+/* Defer rendering of off-screen sections */
+section:not(.hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+}
+
+/* ===== LOADING STATES ===== */
+
+/* Skeleton loading for images */
+img[data-src]:not(.lazy-loaded) {
+    background: linear-gradient(90deg,
+            rgba(100, 255, 218, 0.05) 0%,
+            rgba(100, 255, 218, 0.1) 50%,
+            rgba(100, 255, 218, 0.05) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Fade in loaded images */
+img.lazy-loaded {
+    animation: fadeInImage 0.3s ease-in;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== REDUCE LAYOUT THRASHING ===== */
+
+/* Batch DOM reads and writes */
+.timeline-item,
+.project-card,
+.skill-card {
+    contain: layout;
+}
+
+/* ===== OPTIMIZE BACKDROP FILTERS ===== */
+
+/* Reduce backdrop-filter usage on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+
+    header,
+    .skill-category,
+    .timeline-content,
+    .project-card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* ===== CRITICAL CSS INLINING ===== */
+
+/* Above-the-fold critical styles are inlined in HTML */
+/* This file contains non-critical optimizations */
+
+/* ===== PREVENT REFLOW ===== */
+
+/* Fixed header height to prevent reflow */
+header {
+    min-height: 80px;
+}
+
+/* Fixed button sizes */
+.btn {
+    min-width: 120px;
+    min-height: 44px;
+}
+
+/* ===== OPTIMIZE GRADIENTS ===== */
+
+/* Use simpler gradients for better performance */
+@media (prefers-reduced-motion: reduce) {
+    .hero {
+        background: var(--background-color);
+    }
+
+    .primary-btn::before,
+    .skill-card::before,
+    .timeline-content::before {
+        display: none;
+    }
+}
+
+/* ===== LAZY LOAD BACKGROUND IMAGES ===== */
+
+/* Defer loading of decorative background images */
+.blob {
+    background-color: var(--primary-color);
+    opacity: 0.1;
+}
+
+/* ===== OPTIMIZE SHADOWS ===== */
+
+/* Reduce shadow complexity on mobile */
+@media (max-width: 768px) {
+
+    .project-card,
+    .skill-card,
+    .timeline-content {
+        box-shadow: var(--shadow-sm);
+    }
+}
+
+/* ===== PREVENT LAYOUT SHIFT FROM FONTS ===== */
+
+/* Size adjust for fallback fonts */
+@font-face {
+    font-family: 'Poppins Fallback';
+    src: local('Arial');
+    size-adjust: 100%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 0%;
+}
+
+/* ===== OPTIMIZE MOBILE PERFORMANCE ===== */
+
+@media (max-width: 768px) {
+
+    /* Reduce animation complexity */
+    .timeline-item,
+    .project-card,
+    .skill-card {
+        animation-duration: 0.4s !important;
+    }
+
+    /* Simplify transforms */
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Reduce blur effects */
+    header,
+    .mobile-nav {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+/* ===== OPTIMIZE FOR LOW-END DEVICES ===== */
+
+@media (prefers-reduced-data: reduce) {
+
+    /* Disable animations */
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Remove decorative elements */
+    .blob,
+    .scroll-down {
+        display: none;
+    }
+}

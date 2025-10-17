@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - DevPortfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            color: #e6f1ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .offline-container {
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .offline-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: #64ffda;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #64ffda, #7b5cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: #8892b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #64ffda, #7b5cff);
+            color: #0a192f;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #8892b0;
+        }
+
+        .status.online {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+        }
+
+        .status.offline {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .offline-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .offline-icon svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+        </div>
+        
+        <h1>You're Offline</h1>
+        <p>
+            It looks like you've lost your internet connection. 
+            Don't worry, you can still view cached content or try reconnecting.
+        </p>
+        
+        <button class="btn" onclick="window.location.reload()">
+            Try Again
+        </button>
+        
+        <div class="status offline" id="connectionStatus">
+            <span id="statusText">⚠️ No internet connection</span>
+        </div>
+    </div>
+
+    <script>
+        // Monitor connection status
+        function updateConnectionStatus() {
+            const status = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('statusText');
+            
+            if (navigator.onLine) {
+                status.className = 'status online';
+                statusText.textContent = '✓ Connection restored! Redirecting...';
+                
+                // Redirect to home page after a short delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            } else {
+                status.className = 'status offline';
+                statusText.textContent = '⚠️ No internet connection';
+            }
+        }
+
+        // Check connection status on load
+        updateConnectionStatus();
+
+        // Listen for connection changes
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Periodically check connection
+        setInterval(() => {
+            if (navigator.onLine) {
+                // Try to fetch a small resource to verify real connectivity
+                fetch('/manifest.json', { method: 'HEAD', cache: 'no-cache' })
+                    .then(() => {
+                        updateConnectionStatus();
+                    })
+                    .catch(() => {
+                        // Still offline
+                    });
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
