@@ -266,6 +266,9 @@ class App {
      * Setup global event listeners
      */
     setupEventListeners() {
+        // Language switcher buttons
+        this.setupLanguageSwitcher();
+
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileNav = document.querySelector('.mobile-nav');
@@ -308,6 +311,43 @@ class App {
         // Update active nav link on scroll
         window.addEventListener('scroll', () => {
             this.updateActiveNavLink();
+        });
+    }
+
+    /**
+     * Setup language switcher buttons
+     */
+    setupLanguageSwitcher() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const lang = button.getAttribute('data-lang');
+
+                if (!lang) return;
+
+                // Set language using i18n manager
+                if (this.modules.i18n) {
+                    const success = await this.modules.i18n.setLanguage(lang);
+
+                    if (success) {
+                        // Update button states
+                        langButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.setAttribute('aria-pressed', 'false');
+                        });
+
+                        button.classList.add('active');
+                        button.setAttribute('aria-pressed', 'true');
+
+                        // Emit language change event
+                        this.eventBus.emit('language:changed', {
+                            language: lang,
+                            languageName: button.getAttribute('aria-label')
+                        });
+                    }
+                }
+            });
         });
     }
 
