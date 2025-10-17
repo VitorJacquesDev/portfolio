@@ -528,19 +528,30 @@ header.scrolled {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation: blob-animation 8s ease-in-out infinite;
     z-index: -1;
+    will-change: border-radius;
 }
 
 @keyframes blob-animation {
-    0% {
+
+    0%,
+    100% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: rotate(90deg) scale(1.05);
     }
 
     50% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        border-radius: 40% 50% 60% 50% / 70% 40% 50% 60%;
+        transform: rotate(180deg) scale(1);
     }
 
-    100% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    75% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
+        transform: rotate(270deg) scale(1.05);
     }
 }
 
@@ -4544,4 +4555,107 @@ ct Images - Prevent CLS */
 
 .project-card:hover .project-img img {
     transform: scale(1.05);
+}
+
+/* =
+==== BLOB ANIMATION FIX FOR DESKTOP ===== */
+/* Ensure blob animation works consistently across all desktop browsers */
+@media (min-width: 769px) {
+    .hero-image .blob {
+        animation-name: blob-animation;
+        animation-duration: 8s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        -webkit-animation: blob-animation 8s ease-in-out infinite;
+        -moz-animation: blob-animation 8s ease-in-out infinite;
+        -o-animation: blob-animation 8s ease-in-out infinite;
+    }
+
+    /* Force animation to run even if reduced motion is preferred */
+    .hero-image .image-container .blob {
+        animation: blob-animation 8s ease-in-out infinite !important;
+    }
+}
+
+/* Webkit-specific fix for Safari */
+@-webkit-keyframes blob-animation {
+
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        -webkit-transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        -webkit-transform: rotate(90deg) scale(1.05);
+        transform: rotate(90deg) scale(1.05);
+    }
+
+    50% {
+        border-radius: 40% 50% 60% 50% / 70% 40% 50% 60%;
+        -webkit-transform: rotate(180deg) scale(1);
+        transform: rotate(180deg) scale(1);
+    }
+
+    75% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
+        -webkit-transform: rotate(270deg) scale(1.05);
+        transform: rotate(270deg) scale(1.05);
+    }
+}
+
+/* Mozilla-specific fix for Firefox */
+@-moz-keyframes blob-animation {
+
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        -moz-transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        -moz-transform: rotate(90deg) scale(1.05);
+        transform: rotate(90deg) scale(1.05);
+    }
+
+    50% {
+        border-radius: 40% 50% 60% 50% / 70% 40% 50% 60%;
+        -moz-transform: rotate(180deg) scale(1);
+        transform: rotate(180deg) scale(1);
+    }
+
+    75% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
+        -moz-transform: rotate(270deg) scale(1.05);
+        transform: rotate(270deg) scale(1.05);
+    }
+}
+
+/* ===== D
+EBUG: Ensure blob is visible and animating ===== */
+.hero-image .blob {
+    /* Increase opacity for better visibility during testing */
+    opacity: 0.15 !important;
+    /* Ensure it's positioned correctly */
+    top: 0;
+    left: 0;
+    /* Ensure it's visible */
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Desktop-specific blob visibility */
+@media (min-width: 769px) {
+    .hero-image .blob {
+        /* Make sure animation is running */
+        animation-play-state: running !important;
+        /* Prevent any potential conflicts */
+        pointer-events: none;
+    }
 }
