@@ -35,7 +35,7 @@ const config = {
     'js/app.js'
   ],
   outputDir: 'dist',
-  enableCacheBusting: true
+  enableCacheBusting: false
 };
 
 // Simple CSS minifier
