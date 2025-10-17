@@ -203,7 +203,7 @@ function copyAssets() {
   }
 
   // Copy other files
-  const otherFiles = ['index.html', 'manifest.json', 'robots.txt', 'sitemap.xml', '.htaccess', 'service-worker.js', 'offline.html'];
+  const otherFiles = ['index.html', 'manifest.json', 'robots.txt', 'sitemap.xml', '.htaccess'];
   otherFiles.forEach(file => {
     if (fs.existsSync(file)) {
       fs.copyFileSync(file, path.join(config.outputDir, file));
