@@ -312,6 +312,9 @@ class App {
         window.addEventListener('scroll', () => {
             this.updateActiveNavLink();
         });
+
+        // Project card click handlers
+        this.setupProjectCardHandlers();
     }
 
     /**
@@ -349,6 +352,106 @@ class App {
                 }
             });
         });
+    }
+
+    /**
+     * Setup project card click handlers
+     */
+    setupProjectCardHandlers() {
+        // Use event delegation for better performance
+        document.addEventListener('click', (e) => {
+            // Check if clicked element is within project overlay
+            const overlayContent = e.target.closest('.project-overlay-content');
+            const overlayClose = e.target.closest('.project-overlay-close');
+            const projectCard = e.target.closest('.project-card');
+
+            if (overlayClose) {
+                // Close overlay
+                e.stopPropagation();
+                const card = overlayClose.closest('.project-card');
+                if (card) {
+                    card.classList.remove('overlay-active');
+                }
+                return;
+            }
+
+            if (overlayContent) {
+                // Get project card and open modal
+                e.stopPropagation();
+                const card = overlayContent.closest('.project-card');
+                if (card) {
+                    const projectId = card.getAttribute('data-project-id');
+                    this.openProjectModal(projectId);
+                }
+                return;
+            }
+
+            // For touch devices - toggle overlay on card tap
+            if (projectCard && !overlayContent && !overlayClose) {
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                if (isTouchDevice) {
+                    const isActive = projectCard.classList.contains('overlay-active');
+
+                    // Close all other overlays
+                    document.querySelectorAll('.project-card.overlay-active').forEach(card => {
+                        if (card !== projectCard) {
+                            card.classList.remove('overlay-active');
+                        }
+                    });
+
+                    // Toggle current overlay
+                    if (!isActive) {
+                        projectCard.classList.add('overlay-active');
+                    }
+                }
+            }
+        });
+
+        // For desktop - open modal on card click (when not hovering overlay)
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            // Desktop: click on card image opens modal directly
+            const projectImg = card.querySelector('.project-img');
+            if (projectImg) {
+                projectImg.addEventListener('click', (e) => {
+                    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+                    // On desktop, if clicking the image area but not the overlay, open modal
+                    if (!isTouchDevice && !e.target.closest('.project-overlay-content')) {
+                        const projectId = card.getAttribute('data-project-id');
+                        this.openProjectModal(projectId);
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * Open project modal with project data
+     */
+    openProjectModal(projectId) {
+        if (!projectId || typeof projectsData === 'undefined') {
+            console.error('Project data not available');
+            return;
+        }
+
+        const projectData = projectsData[projectId];
+
+        if (!projectData) {
+            console.error('Project not found:', projectId);
+            return;
+        }
+
+        // Wait for modal to be initialized
+        if (this.modules.projectModal) {
+            this.modules.projectModal.open(projectData);
+            this.eventBus.emit('modal:opened', {
+                projectId: projectId,
+                projectTitle: projectData.title
+            });
+        } else {
+            console.warn('Project modal not initialized yet');
+        }
     }
 
     /**
