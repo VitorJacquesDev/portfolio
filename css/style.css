@@ -2003,7 +2003,7 @@ header.scrolled {
 /* ===== FOOTER ===== */
 footer {
     background-color: var(--surface-color);
-    padding: var(--spacing-lg) 0 var(--spacing-md);
+    padding-inline: 4rem;
     border-top: 1px solid rgba(100, 255, 218, 0.1);
 }
 
