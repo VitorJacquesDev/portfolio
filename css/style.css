@@ -55,24 +55,29 @@ a:hover {
 }
 
 /* Enhanced focus indicators for accessibility */
-a:focus,
-button:focus,
-input:focus,
-textarea:focus,
-select:focus,
-[tabindex]:focus {
-    outline: 3px solid var(--primary-color);
-    outline-offset: 2px;
+/* Only show outline when navigating with keyboard, not on mouse click */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+    outline: none;
 }
 
-/* Ensure focus is visible even with custom styles */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
-select:focus-visible {
+select:focus-visible,
+[tabindex]:focus-visible {
     outline: 3px solid var(--primary-color);
     outline-offset: 2px;
+}
+
+/* Remove outline from navigation links on click */
+nav a:focus {
+    outline: none;
 }
 
 ul {

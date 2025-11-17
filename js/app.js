@@ -578,8 +578,8 @@ class App {
         e.preventDefault();
 
         const headerOffset = 80;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const elementPosition = targetElement.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
 
         window.scrollTo({
             top: offsetPosition,
@@ -592,7 +592,10 @@ class App {
      */
     updateActiveNavLink() {
         const sections = document.querySelectorAll('section');
-        const scrollPosition = window.scrollY + 100;
+        const headerOffset = 80;
+        const scrollPosition = window.scrollY + headerOffset + 1;
+
+        let currentSection = '';
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -600,16 +603,20 @@ class App {
             const sectionId = section.getAttribute('id');
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                    link.removeAttribute('aria-current');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                        link.setAttribute('aria-current', 'page');
-                    }
-                });
+                currentSection = sectionId;
             }
         });
+
+        if (currentSection) {
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+        }
     }
 
     /**
