@@ -95,37 +95,61 @@
       "title": "E-commerce Website",
       "description": "Complete e-commerce platform with admin panel, online payments and inventory management system.",
       "shortDesc": "Complete platform with admin panel and payments",
-      "tags": ["React", "Node.js", "MongoDB"]
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ]
     },
     "project2": {
       "title": "Fitness App",
       "description": "Mobile app for tracking workouts, nutrition and physical progress with community features.",
       "shortDesc": "Track workouts, nutrition and progress",
-      "tags": ["React Native", "Firebase", "Redux"]
+      "tags": [
+        "React Native",
+        "Firebase",
+        "Redux"
+      ]
     },
     "project3": {
       "title": "Task Management System",
       "description": "Task and project management system with real-time collaboration features and productivity analysis.",
       "shortDesc": "Real-time collaboration and productivity",
-      "tags": ["Vue.js", "Express", "PostgreSQL"]
+      "tags": [
+        "Vue.js",
+        "Express",
+        "PostgreSQL"
+      ]
     },
     "project4": {
       "title": "AI Chatbot",
       "description": "Intelligent chatbot with natural language processing for customer service and support automation.",
       "shortDesc": "Intelligent NLP-powered assistant",
-      "tags": ["Python", "TensorFlow", "NLP"]
+      "tags": [
+        "Python",
+        "TensorFlow",
+        "NLP"
+      ]
     },
     "project5": {
       "title": "Dashboard Analytics",
       "description": "Data analysis dashboard with interactive visualizations and customizable reports for businesses.",
       "shortDesc": "Interactive data visualizations",
-      "tags": ["Angular", "D3.js", "Firebase"]
+      "tags": [
+        "Angular",
+        "D3.js",
+        "Firebase"
+      ]
     },
     "project6": {
       "title": "Travel Guide App",
-      "description": "Travel guide app with interactive maps, personalized recommendations and offline features.",
+      "description": "Travel guide app with interactive maps, personalized recommendations and real-time information.",
       "shortDesc": "Interactive maps and recommendations",
-      "tags": ["Flutter", "GraphQL", "Maps API"]
+      "tags": [
+        "Flutter",
+        "GraphQL",
+        "Maps API"
+      ]
     }
   },
   "contact": {

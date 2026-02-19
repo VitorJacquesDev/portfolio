@@ -11,6 +11,8 @@
         content="desenvolvedor, programador, full stack, portfolio, web, mobile, frontend, backend, react, node.js, javascript">
     <meta name="author" content="Vitor de Melo Jacques">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://careca.is-a.dev/">
+    <meta name="ga4-measurement-id" content="">
 
     <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,11 +21,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#64ffda">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Open Graph / Social Media -->
@@ -31,8 +29,8 @@
     <meta property="og:description"
         content="Portfólio profissional de desenvolvedor full stack com projetos, habilidades e informações de contato.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seudominio.com">
-    <meta property="og:image" content="https://seudominio.com/img/profile.svg">
+    <meta property="og:url" content="https://careca.is-a.dev/">
+    <meta property="og:image" content="https://careca.is-a.dev/img/profile.svg">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="es_ES">
@@ -42,13 +40,14 @@
     <meta name="twitter:title" content="Portfólio | Desenvolvedor Full Stack">
     <meta name="twitter:description"
         content="Portfólio profissional de desenvolvedor full stack com projetos, habilidades e informações de contato.">
-    <meta name="twitter:image" content="https://seudominio.com/img/profile.svg">
+    <meta name="twitter:image" content="https://careca.is-a.dev/img/profile.svg">
 
-    <!-- Stylesheets - Load in order: themes, animations, main styles, responsive fixes -->
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive-fixes.css">
+    <!-- Stylesheets - Load in order: themes, animations, main styles, responsive fixes, performance -->
+    <link rel="stylesheet" href="css/themes.ef605270.css">
+    <link rel="stylesheet" href="css/animations.7b7aeffb.css">
+    <link rel="stylesheet" href="css/style.9bb588dc.css">
+    <link rel="stylesheet" href="css/responsive-fixes.2b3a86a5.css">
+    <link rel="stylesheet" href="css/performance-optimizations.18a5e489.css">
 
     <!-- Inline critical styles for app error -->
     <style>
@@ -107,9 +106,14 @@
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous">
-    <link
+    <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap"
+            rel="stylesheet">
+    </noscript>
 </head>
 
 <body>
@@ -148,31 +152,7 @@
                         <span class="lang-text">ES</span>
                     </button>
                 </div>
-                <button class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
-                        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
+
                 <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false"
                     aria-controls="mobile-navigation">
                     <div class="bar"></div>
@@ -211,17 +191,19 @@
                             aria-label="Contact me">Contato</a>
                     </div>
                     <div class="social-icons fade-in stagger-5" role="list" aria-label="Social media links">
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile"><i
-                                class="fab fa-github" aria-hidden="true"></i></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><i
-                                class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://github.com/VitorJacquesDev" target="_blank" rel="noopener noreferrer"
+                            aria-label="Visit my GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/vitorjacquesdev/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"
+                                aria-hidden="true"></i></a>
 
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="image-container scale-in stagger-3">
                         <div class="blob" aria-hidden="true"></div>
-                        <img src="img/profile.svg" alt="Vitor - Full Stack Developer profile illustration">
+                        <img src="img/profile.svg" alt="Vitor - Full Stack Developer profile illustration" width="500"
+                            height="500">
                     </div>
                 </div>
             </div>
@@ -248,7 +230,8 @@
             <div class="about-content">
                 <div class="about-image scroll-reveal-left">
                     <img data-src="img/about.svg" alt="About Me"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                        width="400" height="300">
                 </div>
                 <div class="about-text scroll-reveal-right">
                     <h3 data-i18n="about.heading">Desenvolvedor Full Stack apaixonado por criar soluções inovadoras</h3>
@@ -547,7 +530,8 @@
                     role="listitem">
                     <div class="project-img">
                         <img data-src="img/project1.svg" alt="E-commerce Website project screenshot"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay" aria-hidden="true">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -589,7 +573,8 @@
                     data-project-id="project2">
                     <div class="project-img">
                         <img data-src="img/project2.svg" alt="Fitness App"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -629,7 +614,8 @@
                 <div class="project-card scroll-reveal-scale stagger-3" data-category="web" data-project-id="project3">
                     <div class="project-img">
                         <img data-src="img/project3.svg" alt="Task Management System"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -670,7 +656,8 @@
                     data-project-id="project4">
                     <div class="project-img">
                         <img data-src="img/project4.svg" alt="AI Chatbot"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -710,7 +697,8 @@
                 <div class="project-card scroll-reveal-scale stagger-5" data-category="web" data-project-id="project5">
                     <div class="project-img">
                         <img data-src="img/project5.svg" alt="Dashboard Analytics"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -751,7 +739,8 @@
                     data-project-id="project6">
                     <div class="project-img">
                         <img data-src="img/project6.svg" alt="Travel Guide App"
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E">
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                            width="400" height="300">
                         <div class="project-overlay">
                             <button class="project-overlay-close" aria-label="Close overlay">
                                 <i class="fas fa-times"></i>
@@ -779,18 +768,18 @@
                         </div>
                         <h3 data-i18n="projects.project6.title">Travel Guide App</h3>
                         <p data-i18n="projects.project6.description">Aplicativo de guia de viagens com mapas
-                            interativos, recomendações personalizadas e recursos offline.</p>
+                            interativos, recomendações personalizadas e informações em tempo real.</p>
                         <div class="project-links">
                             <a href="#" target="_blank" class="btn small-btn"><i class="fas fa-eye"></i> <span
                                     data-i18n="projects.demo">Demo</span></a>
-                            <a href="#" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> <span
+                            <a href="https://github.com/VitorJacquesDev/travel-guide-app" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> <span
                                     data-i18n="projects.code">Código</span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="projects-more">
-                <a href="#" class="btn primary-btn" data-i18n="projects.viewMore">Ver Mais Projetos</a>
+                <a href="https://github.com/VitorJacquesDev?tab=repositories" class="btn primary-btn" data-i18n="projects.viewMore">Ver Mais Projetos</a>
             </div>
         </section>
 
@@ -835,10 +824,6 @@
                         <a href="https://www.linkedin.com/in/vitorjacquesdev/" target="_blank" rel="noopener noreferrer"
                             aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"
                                 aria-hidden="true"></i></a>
-
-                        <a href="javascript:void(0)" style="pointer-events: none; opacity: 0.5;"
-                            aria-label="Instagram (coming soon)" aria-disabled="true"><i class="fab fa-instagram"
-                                aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="contact-form scroll-reveal-right">
@@ -874,6 +859,33 @@
             </div>
         </section>
 
+        <!-- Privacy & Cookie Policy -->
+        <section id="privacy-policy" class="about" role="region" aria-labelledby="privacy-policy-heading">
+            <div class="section-header scroll-reveal-up">
+                <h2 id="privacy-policy-heading"><span>Privacidade e</span> <span class="highlight">Cookies</span></h2>
+                <div class="section-line" aria-hidden="true"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text scroll-reveal-right">
+                    <p>
+                        Este site utiliza cookies essenciais para funcionamento e, com consentimento, cookies de
+                        analytics (GA4) para medir desempenho e melhorar a experiencia.
+                    </p>
+                    <p>
+                        Voce pode aceitar ou recusar o uso de analytics no banner de consentimento. A sua escolha
+                        fica salva no navegador e pode ser alterada limpando os dados do site.
+                    </p>
+                    <p>
+                        Dados de contato enviados no formulario sao usados somente para retorno sobre a sua mensagem.
+                    </p>
+                    <button type="button" class="btn secondary-btn"
+                        onclick="window.analytics && window.analytics.showCookieConsent(true)">
+                        Gerenciar cookies
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer role="contentinfo">
             <div class="footer-content">
@@ -890,6 +902,7 @@
                             <li><a href="#skills" data-i18n="nav.skills">Habilidades</a></li>
                             <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
                             <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+                            <li><a href="#privacy-policy">Privacidade e Cookies</a></li>
                         </ul>
                     </div>
                     <div class="footer-links-column">
@@ -914,14 +927,10 @@
             <div class="footer-bottom">
                 <p data-i18n="footer.copyright">&copy; 2023 DevPortfolio. Todos os direitos reservados.</p>
                 <div class="footer-social" role="list" aria-label="Social media links">
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile"><i
-                            class="fab fa-github" aria-hidden="true"></i></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><i
-                            class="fab fa-linkedin" aria-hidden="true"></i></a>
-
-                    <a href="javascript:void(0)" style="pointer-events: none; opacity: 0.5;"
-                        aria-label="Instagram (coming soon)" aria-disabled="true"><i class="fab fa-instagram"
-                            aria-hidden="true"></i></a>
+                    <a href="https://github.com/VitorJacquesDev" target="_blank" rel="noopener noreferrer"
+                        aria-label="Visit my GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/vitorjacquesdev/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
             </div>
         </footer>
@@ -938,29 +947,25 @@
     <!-- Scripts -->
     <!-- JavaScript Modules - Load in dependency order -->
     <!-- Configuration first -->
-    <script src="js/config.js"></script>
+    <script src="js/config.1fdc4ae2.js"></script>
 
     <!-- Polyfills for cross-browser compatibility -->
-    <script src="js/polyfills.js"></script>
+    <script src="js/polyfills.ade9d865.js"></script>
 
     <!-- Core utilities and managers -->
-    <script src="js/i18n.js"></script>
-    <script src="js/theme-manager.js"></script>
-    <script src="js/animation-controller.js"></script>
+    <script src="js/i18n.58b4d312.js"></script>
+    <script src="js/animation-controller.bde7fa2b.js"></script>
 
     <!-- Feature modules -->
-    <script src="js/lazy-loader.js"></script>
-    <script src="js/performance-monitor.js"></script>
-    <script src="js/analytics.js"></script>
-    <script src="js/project-data.js"></script>
-    <script src="js/project-modal.js"></script>
-    <script src="js/form-handler.js"></script>
-
-    <!-- Legacy script (for backward compatibility) -->
-    <script src="js/script.js"></script>
+    <script src="js/lazy-loader.76c2da7e.js"></script>
+    <script src="js/performance-monitor.49aa891c.js"></script>
+    <script src="js/analytics.55b0fb1f.js"></script>
+    <script src="js/project-data.eada33e6.js"></script>
+    <script src="js/project-modal.d9bf55eb.js"></script>
+    <script src="js/form-handler.865f8173.js"></script>
 
     <!-- Main application controller - loads last to coordinate all modules -->
-    <script src="js/app.js"></script>
+    <script src="js/app.d61a1a04.js"></script>
 </body>
 
 </html>

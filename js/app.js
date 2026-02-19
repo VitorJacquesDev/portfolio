@@ -237,14 +237,14 @@ class App {
 
             // Get analytics config
             const analyticsConfig = this.config.analytics || {};
-            const trackingId = analyticsConfig.trackingId || 'G-XXXXXXXXXX';
+            const trackingId = analyticsConfig.trackingId || null;
 
             this.modules.analytics = new AnalyticsManager({
                 trackingId: trackingId,
                 debug: analyticsConfig.debug || this.config.debug,
                 anonymizeIp: analyticsConfig.anonymizeIp !== false,
                 cookieConsent: analyticsConfig.cookieConsent !== false,
-                enabled: analyticsConfig.enabled && trackingId !== 'G-XXXXXXXXXX',
+                enabled: Boolean(analyticsConfig.enabled && trackingId),
                 customDimensions: analyticsConfig.customDimensions || {}
             });
 

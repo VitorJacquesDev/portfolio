@@ -7,7 +7,14 @@
     "build:prod": "node build.js",
     "clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
     "serve": "npx http-server . -p 8080 -c-1",
-    "serve:dist": "npx http-server dist -p 8080 -c-1"
+    "serve:dist": "npx http-server dist -p 8080 -c-1",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint build.js \"js/**/*.js\" \"scripts/**/*.js\"",
+    "test": "npm run test:smoke && npm run test:i18n && npm run test:form",
+    "test:smoke": "node scripts/smoke-test.js",
+    "test:i18n": "node scripts/test-i18n-switch.js",
+    "test:form": "node scripts/test-form-validation.js",
+    "check": "npm run lint && node scripts/check-json.js && node scripts/check-placeholders.js && node scripts/check-locales.js && node scripts/check-i18n-usage.js && node scripts/check-internal-links.js && npm run build && node scripts/smoke-test.js --dist && npm run test"
   },
   "keywords": [
     "portfolio",
@@ -17,6 +24,8 @@
   ],
   "author": "Vitor de Melo Jacques",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^8.57.1"
+  },
   "dependencies": {}
 }

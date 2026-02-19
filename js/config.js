@@ -3,15 +3,17 @@
  * Centralized configuration for the portfolio application
  */
 
+const ga4MeasurementId =
+    document.querySelector('meta[name="ga4-measurement-id"]')?.getAttribute('content')?.trim() || '';
+
 const AppConfig = {
     // Analytics Configuration
     analytics: {
         // Google Analytics 4 Tracking ID
-        // Replace 'G-XXXXXXXXXX' with your actual GA4 tracking ID
-        trackingId: 'G-XXXXXXXXXX',
+        trackingId: ga4MeasurementId,
 
         // Enable/disable analytics
-        enabled: false, // Set to true when you have a valid tracking ID
+        enabled: Boolean(ga4MeasurementId),
 
         // Debug mode - logs analytics events to console
         debug: false,

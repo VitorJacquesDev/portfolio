@@ -1,64 +1,126 @@
 {
-  "buildTime": "2025-10-15T22:21:08.496Z",
-  "version": "41ab38df",
+  "buildTime": "2026-02-19T16:47:33.063Z",
+  "version": "7300e173",
+  "metadata": {
+    "siteUrl": "https://careca.is-a.dev",
+    "ga4MeasurementIdConfigured": false,
+    "socialImageUrl": "https://careca.is-a.dev/img/profile.svg"
+  },
   "files": {
     "css": [
       {
         "original": "css/themes.css",
-        "output": "css\\themes.70e78eb1.css",
-        "hash": "70e78eb1"
+        "output": "css/themes.ef605270.css",
+        "originalSize": 5627,
+        "optimizedSize": 3333,
+        "savings": "40.77%"
       },
       {
         "original": "css/animations.css",
-        "output": "css\\animations.76dea479.css",
-        "hash": "76dea479"
+        "output": "css/animations.7b7aeffb.css",
+        "originalSize": 24484,
+        "optimizedSize": 15083,
+        "savings": "38.40%"
       },
       {
         "original": "css/style.css",
-        "output": "css\\style.7422724e.css",
-        "hash": "7422724e"
+        "output": "css/style.9bb588dc.css",
+        "originalSize": 96770,
+        "optimizedSize": 65919,
+        "savings": "31.88%"
+      },
+      {
+        "original": "css/responsive-fixes.css",
+        "output": "css/responsive-fixes.2b3a86a5.css",
+        "originalSize": 12272,
+        "optimizedSize": 6517,
+        "savings": "46.90%"
+      },
+      {
+        "original": "css/performance-optimizations.css",
+        "output": "css/performance-optimizations.18a5e489.css",
+        "originalSize": 5215,
+        "optimizedSize": 2181,
+        "savings": "58.18%"
       }
     ],
     "js": [
       {
-        "original": "js/theme-manager.js",
-        "output": "js\\theme-manager.a7dfa58a.js",
-        "hash": "a7dfa58a"
+        "original": "js/config.js",
+        "output": "js/config.1fdc4ae2.js",
+        "originalSize": 1932,
+        "optimizedSize": 801,
+        "savings": "58.54%"
+      },
+      {
+        "original": "js/polyfills.js",
+        "output": "js/polyfills.ade9d865.js",
+        "originalSize": 12372,
+        "optimizedSize": 6899,
+        "savings": "44.24%"
       },
       {
         "original": "js/i18n.js",
-        "output": "js\\i18n.2c13eb94.js",
-        "hash": "2c13eb94"
+        "output": "js/i18n.58b4d312.js",
+        "originalSize": 8567,
+        "optimizedSize": 4695,
+        "savings": "45.20%"
       },
       {
         "original": "js/animation-controller.js",
-        "output": "js\\animation-controller.bde7fa2b.js",
-        "hash": "bde7fa2b"
+        "output": "js/animation-controller.bde7fa2b.js",
+        "originalSize": 15492,
+        "optimizedSize": 8253,
+        "savings": "46.73%"
       },
       {
         "original": "js/lazy-loader.js",
-        "output": "js\\lazy-loader.3a7f77a8.js",
-        "hash": "3a7f77a8"
+        "output": "js/lazy-loader.76c2da7e.js",
+        "originalSize": 4020,
+        "optimizedSize": 1962,
+        "savings": "51.19%"
+      },
+      {
+        "original": "js/performance-monitor.js",
+        "output": "js/performance-monitor.49aa891c.js",
+        "originalSize": 13618,
+        "optimizedSize": 8423,
+        "savings": "38.15%"
+      },
+      {
+        "original": "js/analytics.js",
+        "output": "js/analytics.55b0fb1f.js",
+        "originalSize": 16240,
+        "optimizedSize": 8577,
+        "savings": "47.19%"
       },
       {
         "original": "js/project-data.js",
-        "output": "js\\project-data.d46e34aa.js",
-        "hash": "d46e34aa"
+        "output": "js/project-data.eada33e6.js",
+        "originalSize": 8480,
+        "optimizedSize": 6586,
+        "savings": "22.33%"
       },
       {
         "original": "js/project-modal.js",
-        "output": "js\\project-modal.d9bf55eb.js",
-        "hash": "d9bf55eb"
+        "output": "js/project-modal.d9bf55eb.js",
+        "originalSize": 16088,
+        "optimizedSize": 9062,
+        "savings": "43.67%"
       },
       {
         "original": "js/form-handler.js",
-        "output": "js\\form-handler.865f8173.js",
-        "hash": "865f8173"
+        "output": "js/form-handler.865f8173.js",
+        "originalSize": 21353,
+        "optimizedSize": 11763,
+        "savings": "44.91%"
       },
       {
-        "original": "js/script.js",
-        "output": "js\\script.b1016197.js",
-        "hash": "b1016197"
+        "original": "js/app.js",
+        "output": "js/app.d61a1a04.js",
+        "originalSize": 23902,
+        "optimizedSize": 13192,
+        "savings": "44.81%"
       }
     ]
   }

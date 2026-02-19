@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Analytics Manager
  * Handles analytics tracking for user interactions and events
  * Supports Google Analytics 4 (GA4) and custom event tracking
@@ -19,6 +19,7 @@ class AnalyticsManager {
         this.initialized = false;
         this.consentGiven = false;
         this.queue = [];
+        this.consentStorageKey = 'portfolio_cookie_consent_v1';
     }
 
     /**
@@ -398,7 +399,13 @@ class AnalyticsManager {
      * Check cookie consent
      */
     checkCookieConsent() {
-        return false;
+        try {
+            const savedChoice = window.localStorage.getItem(this.consentStorageKey);
+            return savedChoice === 'accepted';
+        } catch (error) {
+            console.warn('Unable to read cookie consent from storage:', error);
+            return false;
+        }
     }
 
     /**
@@ -406,13 +413,10 @@ class AnalyticsManager {
      */
     grantConsent() {
         this.consentGiven = true;
+        this.saveCookieConsent('accepted');
 
         // Hide consent banner
-        const banner = document.querySelector('.cookie-consent-banner');
-        if (banner) {
-            banner.classList.remove('show');
-            setTimeout(() => banner.remove(), 300);
-        }
+        this.hideCookieConsentBanner();
 
         // Initialize analytics
         this.init();
@@ -423,19 +427,27 @@ class AnalyticsManager {
      */
     denyConsent() {
         this.consentGiven = false;
+        this.saveCookieConsent('denied');
 
         // Hide consent banner
-        const banner = document.querySelector('.cookie-consent-banner');
-        if (banner) {
-            banner.classList.remove('show');
-            setTimeout(() => banner.remove(), 300);
-        }
+        this.hideCookieConsentBanner();
     }
 
     /**
      * Show cookie consent banner
      */
-    showCookieConsent() {
+    showCookieConsent(force = false) {
+        if (!force) {
+            try {
+                const savedChoice = window.localStorage.getItem(this.consentStorageKey);
+                if (savedChoice === 'accepted' || savedChoice === 'denied') {
+                    return;
+                }
+            } catch (error) {
+                console.warn('Unable to read cookie consent from storage:', error);
+            }
+        }
+
         // Check if already shown
         if (document.querySelector('.cookie-consent-banner')) {
             return;
@@ -446,12 +458,12 @@ class AnalyticsManager {
         banner.innerHTML = `
             <div class="cookie-consent-content">
                 <div class="cookie-consent-text">
-                    <h3>🍪 Cookie Notice</h3>
-                    <p>We use cookies and analytics to improve your experience and understand how you use our site. Your privacy is important to us.</p>
+                    <h3>Cookies e privacidade</h3>
+                    <p>Usamos cookies essenciais para funcionamento do site e, com seu consentimento, analytics (GA4) para medir desempenho.</p>
                 </div>
                 <div class="cookie-consent-buttons">
-                    <button class="btn primary-btn" onclick="window.analytics.grantConsent()">Accept</button>
-                    <button class="btn secondary-btn" onclick="window.analytics.denyConsent()">Decline</button>
+                    <button class="btn primary-btn" onclick="window.analytics.grantConsent()">Aceitar analytics</button>
+                    <button class="btn secondary-btn" onclick="window.analytics.denyConsent()">Recusar</button>
                 </div>
             </div>
         `;
@@ -460,6 +472,28 @@ class AnalyticsManager {
 
         // Show banner with animation
         setTimeout(() => banner.classList.add('show'), 100);
+    }
+
+    /**
+     * Save cookie consent choice
+     */
+    saveCookieConsent(choice) {
+        try {
+            window.localStorage.setItem(this.consentStorageKey, choice);
+        } catch (error) {
+            console.warn('Unable to persist cookie consent:', error);
+        }
+    }
+
+    /**
+     * Hide cookie consent banner
+     */
+    hideCookieConsentBanner() {
+        const banner = document.querySelector('.cookie-consent-banner');
+        if (!banner) return;
+
+        banner.classList.remove('show');
+        setTimeout(() => banner.remove(), 300);
     }
 
     /**

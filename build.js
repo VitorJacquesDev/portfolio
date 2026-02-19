@@ -1,18 +1,7 @@
-/**
- * Build Script for Portfolio Optimization
- * Minifies CSS and JavaScript files
- * 
- * Usage: node build.js
- * 
- * Note: This is a simple build script. For production, consider using
- * tools like Webpack, Vite, or Parcel for more advanced optimization.
- */
-
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-// Configuration
 const config = {
   cssFiles: [
     'css/themes.css',
@@ -34,173 +23,184 @@ const config = {
     'js/form-handler.js',
     'js/app.js'
   ],
-  outputDir: 'dist'
+  outputDir: 'dist',
+  copyDirs: ['img', 'locales'],
+  rootFiles: ['robots.txt', 'sitemap.xml', '.htaccess']
 };
 
-// Simple CSS minifier
 function minifyCSS(css) {
   return css
-    // Remove comments
     .replace(/\/\*[\s\S]*?\*\//g, '')
-    // Remove whitespace
     .replace(/\s+/g, ' ')
-    // Remove spaces around special characters
     .replace(/\s*([{}:;,>+~])\s*/g, '$1')
-    // Remove trailing semicolons
     .replace(/;}/g, '}')
-    // Remove unnecessary quotes
     .replace(/url\((['"]?)([^'")]+)\1\)/g, 'url($2)')
     .trim();
 }
 
-// Simple JS minifier (basic - for production use a proper minifier like Terser)
 function minifyJS(js) {
   return js
-    // Remove single-line comments (but preserve URLs)
     .replace(/(?:^|\s)\/\/.*$/gm, '')
-    // Remove multi-line comments
     .replace(/\/\*[\s\S]*?\*\//g, '')
-    // Remove extra whitespace
     .replace(/\s+/g, ' ')
-    // Remove whitespace around operators and punctuation
     .replace(/\s*([{}();,:])\s*/g, '$1')
     .trim();
 }
 
-// Generate hash for build version
 function generateHash(content) {
-  return crypto.createHash('md5').update(content).digest('hex').substring(0, 8);
+  return crypto.createHash('md5').update(content).digest('hex').slice(0, 8);
 }
 
-// Ensure output directory exists
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-// Process CSS files
-function processCSS() {
-  console.log('\n📦 Processing CSS files...');
-  const cssDir = path.join(config.outputDir, 'css');
-  ensureDir(cssDir);
-
-  const processedFiles = [];
-
-  config.cssFiles.forEach(file => {
-    try {
-      const content = fs.readFileSync(file, 'utf8');
-      const minified = minifyCSS(content);
-      const originalSize = Buffer.byteLength(content, 'utf8');
-      const minifiedSize = Buffer.byteLength(minified, 'utf8');
-      const savings = ((1 - minifiedSize / originalSize) * 100).toFixed(2);
-
-      const outputFile = file;
-      const outputPath = path.join(config.outputDir, outputFile);
-      ensureDir(path.dirname(outputPath));
-      fs.writeFileSync(outputPath, minified);
-
-      console.log(`✓ ${file}`);
-      console.log(`  Original: ${(originalSize / 1024).toFixed(2)} KB`);
-      console.log(`  Minified: ${(minifiedSize / 1024).toFixed(2)} KB`);
-      console.log(`  Savings: ${savings}%`);
-
-      processedFiles.push({
-        original: file,
-        output: outputFile
-      });
-    } catch (error) {
-      console.error(`✗ Error processing ${file}:`, error.message);
-    }
-  });
-
-  return processedFiles;
-}
-
-// Process JS files
-function processJS() {
-  console.log('\n📦 Processing JavaScript files...');
-  const jsDir = path.join(config.outputDir, 'js');
-  ensureDir(jsDir);
-
-  const processedFiles = [];
-
-  config.jsFiles.forEach(file => {
-    try {
-      const content = fs.readFileSync(file, 'utf8');
-      const minified = minifyJS(content);
-      const originalSize = Buffer.byteLength(content, 'utf8');
-      const minifiedSize = Buffer.byteLength(minified, 'utf8');
-      const savings = ((1 - minifiedSize / originalSize) * 100).toFixed(2);
-
-      const outputFile = file;
-      const outputPath = path.join(config.outputDir, outputFile);
-      ensureDir(path.dirname(outputPath));
-      fs.writeFileSync(outputPath, minified);
-
-      console.log(`✓ ${file}`);
-      console.log(`  Original: ${(originalSize / 1024).toFixed(2)} KB`);
-      console.log(`  Minified: ${(minifiedSize / 1024).toFixed(2)} KB`);
-      console.log(`  Savings: ${savings}%`);
-
-      processedFiles.push({
-        original: file,
-        output: outputFile
-      });
-    } catch (error) {
-      console.error(`✗ Error processing ${file}:`, error.message);
-    }
-  });
-
-  return processedFiles;
-}
-
-// Copy other assets
-function copyAssets() {
-  console.log('\n📦 Copying other assets...');
-
-  // Copy images
-  const imgDir = path.join(config.outputDir, 'img');
-  ensureDir(imgDir);
-
-  if (fs.existsSync('img')) {
-    const images = fs.readdirSync('img');
-    images.forEach(img => {
-      fs.copyFileSync(path.join('img', img), path.join(imgDir, img));
-    });
-    console.log(`✓ Copied ${images.length} images`);
+function cleanOutputDir() {
+  if (fs.existsSync(config.outputDir)) {
+    fs.rmSync(config.outputDir, { recursive: true, force: true });
   }
+  ensureDir(config.outputDir);
+}
 
-  // Copy locales
-  const localesDir = path.join(config.outputDir, 'locales');
-  ensureDir(localesDir);
+function createHashedFile(relativeFilePath, content) {
+  const dir = path.dirname(relativeFilePath);
+  const ext = path.extname(relativeFilePath);
+  const base = path.basename(relativeFilePath, ext);
+  const hash = generateHash(content);
+  const hashedRelativePath = path.posix.join(dir.replace(/\\/g, '/'), `${base}.${hash}${ext}`);
+  const outputPath = path.join(config.outputDir, hashedRelativePath);
 
-  if (fs.existsSync('locales')) {
-    const locales = fs.readdirSync('locales');
-    locales.forEach(locale => {
-      fs.copyFileSync(path.join('locales', locale), path.join(localesDir, locale));
-    });
-    console.log(`✓ Copied ${locales.length} locale files`);
-  }
+  ensureDir(path.dirname(outputPath));
+  fs.writeFileSync(outputPath, content);
 
-  // Copy other files
-  const otherFiles = ['index.html', 'robots.txt', 'sitemap.xml', '.htaccess'];
-  otherFiles.forEach(file => {
-    if (fs.existsSync(file)) {
-      fs.copyFileSync(file, path.join(config.outputDir, file));
-      console.log(`✓ Copied ${file}`);
+  return hashedRelativePath;
+}
+
+function processAssets(files, minifier, label) {
+  console.log(`\nProcessing ${label} files...`);
+
+  const manifestEntries = [];
+  const assetMap = {};
+
+  files.forEach((file) => {
+    try {
+      const source = fs.readFileSync(file, 'utf8');
+      const optimized = minifier(source);
+      const outputFile = createHashedFile(file, optimized);
+      const originalSize = Buffer.byteLength(source, 'utf8');
+      const optimizedSize = Buffer.byteLength(optimized, 'utf8');
+      const savings = ((1 - optimizedSize / originalSize) * 100).toFixed(2);
+
+      manifestEntries.push({
+        original: file,
+        output: outputFile,
+        originalSize,
+        optimizedSize,
+        savings: `${savings}%`
+      });
+
+      assetMap[file] = outputFile;
+
+      console.log(`OK ${file} -> ${outputFile}`);
+    } catch (error) {
+      console.error(`ERROR processing ${file}:`, error.message);
+      process.exitCode = 1;
     }
+  });
+
+  return { manifestEntries, assetMap };
+}
+
+function replaceMetaValue(html, pattern, replacement) {
+  return html.replace(pattern, replacement);
+}
+
+function processIndexHtml(assetMap) {
+  const siteUrl = (process.env.SITE_URL || 'https://careca.is-a.dev').replace(/\/$/, '');
+  const ga4MeasurementId = (process.env.GA4_MEASUREMENT_ID || '').trim();
+  const socialImageUrl = (process.env.SOCIAL_IMAGE_URL || `${siteUrl}/img/profile.svg`).trim();
+
+  let html = fs.readFileSync('index.html', 'utf8');
+
+  html = replaceMetaValue(html, /<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${siteUrl}/">`);
+  html = replaceMetaValue(html, /<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${siteUrl}/">`);
+  html = replaceMetaValue(html, /<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${socialImageUrl}">`);
+  html = replaceMetaValue(html, /<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${socialImageUrl}">`);
+  html = replaceMetaValue(html, /<meta name="ga4-measurement-id" content="[^"]*">/, `<meta name="ga4-measurement-id" content="${ga4MeasurementId}">`);
+
+  Object.entries(assetMap).forEach(([originalPath, hashedPath]) => {
+    html = html.replaceAll(originalPath, hashedPath);
+  });
+
+  fs.writeFileSync(path.join(config.outputDir, 'index.html'), html);
+
+  return {
+    siteUrl,
+    ga4MeasurementIdConfigured: Boolean(ga4MeasurementId),
+    socialImageUrl
+  };
+}
+
+function copyDirectoryRecursive(sourceDir, destinationDir) {
+  ensureDir(destinationDir);
+
+  const entries = fs.readdirSync(sourceDir, { withFileTypes: true });
+  entries.forEach((entry) => {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const destinationPath = path.join(destinationDir, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDirectoryRecursive(sourcePath, destinationPath);
+      return;
+    }
+
+    fs.copyFileSync(sourcePath, destinationPath);
   });
 }
 
-// Generate build manifest
-function generateManifest(cssFiles, jsFiles) {
+function copyStaticAssets() {
+  config.copyDirs.forEach((dir) => {
+    if (!fs.existsSync(dir)) return;
+    copyDirectoryRecursive(dir, path.join(config.outputDir, dir));
+    console.log(`Copied ${dir}/`);
+  });
+
+  config.rootFiles.forEach((file) => {
+    if (!fs.existsSync(file)) return;
+
+    const destination = path.join(config.outputDir, file);
+    ensureDir(path.dirname(destination));
+
+    if (file === 'robots.txt') {
+      const siteUrl = (process.env.SITE_URL || 'https://careca.is-a.dev').replace(/\/$/, '');
+      const robots = fs.readFileSync(file, 'utf8')
+        .replace(/Sitemap:\s*https?:\/\/[^\s]+/i, `Sitemap:${siteUrl}/sitemap.xml`);
+      fs.writeFileSync(destination, robots);
+      return;
+    }
+
+    if (file === 'sitemap.xml') {
+      const siteUrl = (process.env.SITE_URL || 'https://careca.is-a.dev').replace(/\/$/, '');
+      const sitemap = fs.readFileSync(file, 'utf8')
+        .replace(/<loc>https?:\/\/[^<]+<\/loc>/i, `<loc>${siteUrl}/</loc>`);
+      fs.writeFileSync(destination, sitemap);
+      return;
+    }
+
+    fs.copyFileSync(file, destination);
+  });
+}
+
+function generateManifest(cssEntries, jsEntries, metadata) {
   const manifest = {
     buildTime: new Date().toISOString(),
     version: generateHash(Date.now().toString()),
+    metadata,
     files: {
-      css: cssFiles,
-      js: jsFiles
+      css: cssEntries,
+      js: jsEntries
     }
   };
 
@@ -208,41 +208,32 @@ function generateManifest(cssFiles, jsFiles) {
     path.join(config.outputDir, 'build-manifest.json'),
     JSON.stringify(manifest, null, 2)
   );
-
-  console.log('\n✓ Generated build manifest');
 }
 
-// Main build function
 function build() {
-  console.log('🚀 Starting build process...\n');
-  console.log('Configuration:');
-  console.log(`  Output directory: ${config.outputDir}`);
+  console.log('Starting build process...');
 
-  // Clean output directory
-  if (fs.existsSync(config.outputDir)) {
-    fs.rmSync(config.outputDir, { recursive: true });
+  cleanOutputDir();
+
+  const { manifestEntries: cssEntries, assetMap: cssMap } = processAssets(config.cssFiles, minifyCSS, 'CSS');
+  const { manifestEntries: jsEntries, assetMap: jsMap } = processAssets(config.jsFiles, minifyJS, 'JavaScript');
+  const assetMap = { ...cssMap, ...jsMap };
+
+  copyStaticAssets();
+  const metadata = processIndexHtml(assetMap);
+  generateManifest(cssEntries, jsEntries, metadata);
+
+  if (process.exitCode && process.exitCode !== 0) {
+    throw new Error('Build completed with errors');
   }
-  ensureDir(config.outputDir);
 
-  // Process files
-  const cssFiles = processCSS();
-  const jsFiles = processJS();
-  copyAssets();
-  generateManifest(cssFiles, jsFiles);
-
-  console.log('\n✅ Build completed successfully!');
-  console.log(`\nOutput directory: ${path.resolve(config.outputDir)}`);
-  console.log('\n💡 Note: For production builds, consider using professional tools like:');
-  console.log('   - Terser for JavaScript minification');
-  console.log('   - cssnano for CSS optimization');
-  console.log('   - imagemin for image compression');
-  console.log('   - Webpack, Vite, or Parcel for complete build pipelines');
+  console.log('Build completed successfully');
+  console.log(`Output directory: ${path.resolve(config.outputDir)}`);
 }
 
-// Run build
 try {
   build();
 } catch (error) {
-  console.error('\n❌ Build failed:', error.message);
+  console.error('Build failed:', error.message);
   process.exit(1);
 }
