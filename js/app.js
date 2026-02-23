@@ -317,6 +317,9 @@ class App {
 
         // Project card click handlers
         this.setupProjectCardHandlers();
+
+        // Project filter buttons
+        this.setupProjectFilters();
     }
 
     /**
@@ -426,6 +429,82 @@ class App {
                 });
             }
         });
+    }
+
+    /**
+     * Setup project filter buttons
+     */
+    setupProjectFilters() {
+        const projectsFilter = document.querySelector('.projects-filter');
+        const projectsGrid = document.querySelector('.projects-grid');
+
+        if (!projectsFilter || !projectsGrid) return;
+
+        const filterButtons = Array.from(projectsFilter.querySelectorAll('.filter-btn'));
+        const projectCards = Array.from(projectsGrid.querySelectorAll('.project-card'));
+
+        if (filterButtons.length === 0 || projectCards.length === 0) return;
+
+        projectsFilter.addEventListener('click', (e) => {
+            const button = e.target.closest('.filter-btn');
+            if (!button) return;
+
+            const filter = button.getAttribute('data-filter');
+            if (!filter) return;
+
+            this.applyProjectFilter(filter, {
+                button,
+                filterButtons,
+                projectCards,
+                projectsGrid
+            });
+        });
+    }
+
+    /**
+     * Apply project filter to cards
+     */
+    applyProjectFilter(filter, context) {
+        const { button, filterButtons, projectCards, projectsGrid } = context;
+
+        // Update active button state
+        filterButtons.forEach(filterButton => {
+            const isActive = filterButton === button;
+            filterButton.classList.toggle('active', isActive);
+            filterButton.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            filterButton.classList.remove('activating');
+        });
+
+        button.classList.add('activating');
+        setTimeout(() => button.classList.remove('activating'), 300);
+
+        projectsGrid.classList.add('reflowing');
+
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const shouldShow = filter === 'all' || category === filter;
+
+            card.classList.remove('filtering-in', 'filtering-out');
+
+            if (shouldShow) {
+                card.classList.remove('filtered-out', 'overlay-active');
+                card.classList.add('filtered-in');
+                card.setAttribute('aria-hidden', 'false');
+
+                // Restart entrance animation for visible cards
+                void card.offsetWidth;
+                card.classList.add('filtering-in');
+            } else {
+                card.classList.remove('filtered-in', 'overlay-active');
+                card.classList.add('filtered-out');
+                card.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        setTimeout(() => {
+            projectsGrid.classList.remove('reflowing');
+            projectCards.forEach(card => card.classList.remove('filtering-in'));
+        }, 450);
     }
 
     /**
