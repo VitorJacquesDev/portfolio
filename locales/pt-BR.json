@@ -89,6 +89,17 @@
     "code": "Código",
     "viewMore": "Ver Mais Projetos",
     "viewDetails": "Ver Detalhes",
+    "modal": {
+      "close": "Fechar modal",
+      "prevImage": "Imagem anterior",
+      "nextImage": "Próxima imagem",
+      "featuresTitle": "Principais recursos",
+      "techTitle": "Tecnologias utilizadas",
+      "liveDemo": "Demo ao vivo",
+      "sourceCode": "Código-fonte",
+      "openedAnnouncement": "Detalhes do projeto abertos",
+      "closedAnnouncement": "Detalhes do projeto fechados"
+    },
     "noResults": "Nenhum projeto encontrado",
     "noResultsDesc": "Tente selecionar uma categoria diferente",
     "project1": {

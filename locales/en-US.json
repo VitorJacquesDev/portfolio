@@ -89,6 +89,17 @@
     "code": "Code",
     "viewMore": "View More Projects",
     "viewDetails": "View Details",
+    "modal": {
+      "close": "Close modal",
+      "prevImage": "Previous image",
+      "nextImage": "Next image",
+      "featuresTitle": "Key Features",
+      "techTitle": "Technologies Used",
+      "liveDemo": "Live Demo",
+      "sourceCode": "Source Code",
+      "openedAnnouncement": "Project details modal opened",
+      "closedAnnouncement": "Project details modal closed"
+    },
     "noResults": "No projects found",
     "noResultsDesc": "Try selecting a different category",
     "project1": {

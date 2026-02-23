@@ -508,6 +508,91 @@ class App {
     }
 
     /**
+     * Get project data merged with available i18n translations
+     * @param {string} projectId
+     * @returns {Object|null}
+     */
+    getProjectData(projectId) {
+        if (!projectId || typeof projectsData === 'undefined') {
+            return null;
+        }
+
+        const baseProject = projectsData[projectId];
+        if (!baseProject) {
+            return null;
+        }
+
+        return this.getLocalizedProjectData(baseProject, projectId);
+    }
+
+    /**
+     * Merge base project data with locale-specific values when available
+     * @param {Object} baseProject
+     * @param {string} projectId
+     * @returns {Object}
+     */
+    getLocalizedProjectData(baseProject, projectId) {
+        const i18n = this.modules.i18n;
+        if (!i18n || typeof i18n.translate !== 'function') {
+            return { ...baseProject };
+        }
+
+        const keyPrefix = `projects.${projectId}`;
+        const currentLanguage = typeof i18n.getCurrentLanguage === 'function'
+            ? i18n.getCurrentLanguage()
+            : null;
+
+        const localizedTitle = i18n.translate(`${keyPrefix}.title`, baseProject.title);
+        const localizedDescription = i18n.translate(`${keyPrefix}.description`, baseProject.description);
+        const localizedTags = i18n.translate(`${keyPrefix}.tags`, baseProject.tags);
+        const localizedFeatures = i18n.translate(`${keyPrefix}.features`, baseProject.features);
+        const localizedTechnologies = i18n.translate(`${keyPrefix}.technologies`, baseProject.technologies);
+        const localizedLongDescription = i18n.translate(`${keyPrefix}.longDescription`);
+        const hasLongDescriptionTranslation =
+            typeof localizedLongDescription === 'string' &&
+            localizedLongDescription !== `${keyPrefix}.longDescription`;
+
+        return {
+            ...baseProject,
+            title: localizedTitle,
+            description: localizedDescription,
+            tags: Array.isArray(localizedTags) ? localizedTags : baseProject.tags,
+            features: Array.isArray(localizedFeatures) ? localizedFeatures : baseProject.features,
+            technologies: Array.isArray(localizedTechnologies) ? localizedTechnologies : baseProject.technologies,
+            longDescription: hasLongDescriptionTranslation
+                ? localizedLongDescription
+                : (currentLanguage && currentLanguage !== 'en-US'
+                    ? localizedDescription
+                    : baseProject.longDescription)
+        };
+    }
+
+    /**
+     * Refresh modal content with translated project data if it is currently open
+     */
+    refreshOpenProjectModal() {
+        const modal = this.modules.projectModal;
+        if (!modal || !modal.isOpen || !modal.currentProject || !modal.currentProject.id) {
+            return;
+        }
+
+        const localizedProject = this.getProjectData(modal.currentProject.id);
+        if (!localizedProject) {
+            return;
+        }
+
+        if (typeof modal.refreshContent === 'function') {
+            modal.refreshContent(localizedProject);
+            return;
+        }
+
+        if (typeof modal.populateModal === 'function') {
+            modal.currentProject = localizedProject;
+            modal.populateModal(localizedProject);
+        }
+    }
+
+    /**
      * Open project modal with project data
      */
     openProjectModal(projectId) {
@@ -516,7 +601,7 @@ class App {
             return;
         }
 
-        const projectData = projectsData[projectId];
+        const projectData = this.getProjectData(projectId);
 
         if (!projectData) {
             console.error('Project not found:', projectId);
@@ -553,6 +638,8 @@ class App {
             if (this.modules.analytics) {
                 this.modules.analytics.trackLanguageChange(data.language);
             }
+
+            this.refreshOpenProjectModal();
         });
 
         // Form submission events

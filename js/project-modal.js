@@ -14,6 +14,21 @@ class ProjectModal {
     }
 
     /**
+     * Translate helper for modal UI strings
+     * @param {string} key
+     * @param {string} fallback
+     * @returns {string}
+     */
+    translate(key, fallback) {
+        if (typeof i18nManager === 'undefined' || typeof i18nManager.translate !== 'function') {
+            return fallback;
+        }
+
+        const value = i18nManager.translate(key, fallback);
+        return typeof value === 'string' ? value : fallback;
+    }
+
+    /**
      * Initialize the modal by creating HTML structure and attaching event listeners
      */
     init() {
@@ -73,6 +88,7 @@ class ProjectModal {
 
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         this.modal = document.getElementById('projectModal');
+        this.updateStaticText();
     }
 
     /**
@@ -133,7 +149,7 @@ class ProjectModal {
         }, 100);
 
         // Announce modal opening for screen readers
-        this.announce(`Project details modal opened: ${projectData.title}`);
+        this.announce(`${this.translate('projects.modal.openedAnnouncement', 'Project details modal opened')}: ${projectData.title}`);
     }
 
     /**
@@ -155,7 +171,7 @@ class ProjectModal {
         }
 
         // Announce modal closing for screen readers
-        this.announce('Project details modal closed');
+        this.announce(this.translate('projects.modal.closedAnnouncement', 'Project details modal closed'));
 
         // Clear current project after animation
         setTimeout(() => {
@@ -164,10 +180,64 @@ class ProjectModal {
     }
 
     /**
+     * Refresh content while keeping the modal open (used on language change)
+     * @param {Object} projectData
+     */
+    refreshContent(projectData) {
+        if (!this.isOpen || !projectData) return;
+
+        const previousImageIndex = this.currentImageIndex;
+        this.currentProject = projectData;
+        this.currentImageIndex = 0;
+
+        this.populateModal(projectData);
+
+        const images = this.currentProject.images || [this.currentProject.thumbnail];
+        if (Array.isArray(images) && images.length > 1 && previousImageIndex > 0 && previousImageIndex < images.length) {
+            this.showImage(previousImageIndex);
+        }
+    }
+
+    /**
+     * Update static modal labels based on current language
+     */
+    updateStaticText() {
+        if (!this.modal) return;
+
+        const closeBtn = this.modal.querySelector('.modal-close');
+        const prevBtn = this.modal.querySelector('.gallery-prev');
+        const nextBtn = this.modal.querySelector('.gallery-next');
+        const featuresTitle = this.modal.querySelector('.modal-features h3');
+        const techTitle = this.modal.querySelector('.modal-tech-stack h3');
+
+        if (closeBtn) {
+            closeBtn.setAttribute('aria-label', this.translate('projects.modal.close', 'Close modal'));
+        }
+
+        if (prevBtn) {
+            prevBtn.setAttribute('aria-label', this.translate('projects.modal.prevImage', 'Previous image'));
+        }
+
+        if (nextBtn) {
+            nextBtn.setAttribute('aria-label', this.translate('projects.modal.nextImage', 'Next image'));
+        }
+
+        if (featuresTitle) {
+            featuresTitle.textContent = this.translate('projects.modal.featuresTitle', 'Key Features');
+        }
+
+        if (techTitle) {
+            techTitle.textContent = this.translate('projects.modal.techTitle', 'Technologies Used');
+        }
+    }
+
+    /**
      * Populate modal with project data
      * @param {Object} project - Project data
      */
     populateModal(project) {
+        this.updateStaticText();
+
         // Title
         this.modal.querySelector('.modal-title').textContent = project.title;
 
@@ -204,13 +274,13 @@ class ProjectModal {
         
         if (project.demoUrl && project.demoUrl !== '#') {
             linksHTML += `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn primary-btn">
-                <i class="fas fa-external-link-alt"></i> Live Demo
+                <i class="fas fa-external-link-alt"></i> ${this.translate('projects.modal.liveDemo', 'Live Demo')}
             </a>`;
         }
         
         if (project.githubUrl && project.githubUrl !== '#') {
             linksHTML += `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">
-                <i class="fab fa-github"></i> Source Code
+                <i class="fab fa-github"></i> ${this.translate('projects.modal.sourceCode', 'Source Code')}
             </a>`;
         }
         
