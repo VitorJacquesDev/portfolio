@@ -121,7 +121,7 @@ const projectsData = {
         images: ['img/project5.svg', 'img/project5.svg', 'img/project5.svg'],
         thumbnail: 'img/project5.svg',
         demoUrl: '#',
-        githubUrl: '#',
+        githubUrl: 'https://github.com/VitorJacquesDev/dashboard-analytics',
         featured: true
     },
     'project6': {
