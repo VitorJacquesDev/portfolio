@@ -8,6 +8,8 @@ class App {
         this.modules = {};
         this.initialized = false;
         this.eventBus = new EventBus();
+        this.anchorScrollCorrectionTimeout = null;
+        this.anchorScrollLoadHandler = null;
 
         // Use global config if available, otherwise use defaults
         const globalConfig = window.AppConfig || {};
@@ -577,14 +579,63 @@ class App {
 
         e.preventDefault();
 
-        const headerOffset = 80;
-        const elementPosition = targetElement.offsetTop;
-        const offsetPosition = elementPosition - headerOffset;
+        const offsetPosition = this.getAnchorScrollPosition(targetElement);
 
         window.scrollTo({
-            top: offsetPosition,
+            top: Math.max(0, offsetPosition),
             behavior: 'smooth'
         });
+
+        this.scheduleAnchorScrollCorrection(targetElement);
+    }
+
+    /**
+     * Get scroll position for an anchor target accounting for the current header height
+     */
+    getAnchorScrollPosition(targetElement) {
+        const header = document.querySelector('header');
+        const headerOffset = header ? header.getBoundingClientRect().height : 80;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+        return elementPosition - headerOffset;
+    }
+
+    /**
+     * Correct anchor position after smooth scroll in case layout shifts on first load
+     */
+    scheduleAnchorScrollCorrection(targetElement) {
+        if (!targetElement) return;
+
+        if (this.anchorScrollCorrectionTimeout) {
+            clearTimeout(this.anchorScrollCorrectionTimeout);
+        }
+
+        const correctPosition = () => {
+            const correctedPosition = Math.max(0, this.getAnchorScrollPosition(targetElement));
+            const difference = Math.abs(window.pageYOffset - correctedPosition);
+            this.anchorScrollCorrectionTimeout = null;
+
+            // Only correct when there is a visible mismatch
+            if (difference > 8) {
+                window.scrollTo(0, correctedPosition);
+            }
+        };
+
+        this.anchorScrollCorrectionTimeout = setTimeout(correctPosition, 700);
+
+        // First visit can still shift layout after click (fonts/images). Re-align once page finishes loading.
+        if (document.readyState !== 'complete') {
+            if (this.anchorScrollLoadHandler) {
+                window.removeEventListener('load', this.anchorScrollLoadHandler);
+            }
+
+            this.anchorScrollLoadHandler = () => {
+                correctPosition();
+                this.anchorScrollLoadHandler = null;
+            };
+
+            window.addEventListener('load', this.anchorScrollLoadHandler, { once: true });
+        }
     }
 
     /**

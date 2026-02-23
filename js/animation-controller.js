@@ -262,9 +262,6 @@ class AnimationController {
         // Setup card elevation on hover
         this.setupCardElevation();
 
-        // Setup smooth scroll
-        this.setupSmoothScroll();
-
         // Setup loading states
         this.setupLoadingStates();
     }
